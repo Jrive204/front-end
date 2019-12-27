@@ -1,10 +1,17 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
+
+import CombinedForm from "./CombinedForm";
+
 
 function App() {
   return (
-    <div className="App">
-      
+   
+    <div>
+     
+   
+      <CombinedForm/>
+     
     </div>
   );
 }
