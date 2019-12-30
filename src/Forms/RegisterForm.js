@@ -1,5 +1,6 @@
 import React from "react";
 import {useForm} from "react-hook-form";
+import {axiosWithAuth}  from "../util/axiosWithAuth"
 
 import "./Forms.css";
 // import loginImg from "../../login.jpg";
@@ -10,6 +11,17 @@ export default function RegisterForm() {
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = data => {
     console.log(data);
+    axiosWithAuth()
+   .post("https://reqres.in/api/users/", data)
+  //  https://lambda-food-truck.herokuapp.com/api/auth/register
+   .then(res => {
+     console.log("success", res);
+    
+   })
+   .catch(err =>
+     console.log(err.response)
+   );
+  
 
   };
 
@@ -78,10 +90,24 @@ export default function RegisterForm() {
         {errors.password && errors.password.type === "minLength" && (
           <span>Password is too short - 5 characters</span>
         )}
-      </div>
+
+        <label htmlFor="role">
+            Select your role
+          <select name="role"
+         ref={register({required: true})}
+         >
+          {errors.role && errors.role.type === "required" && (
+          <span>Role is required</span>
+        )}  
+          <option value="1 ">Diner</option>
+          <option value="2">Operator</option>
+          </select>
+        </label>
+
+      </div> 
       
       <div className="footer">
-      {/* <button type="button" className="btn" >Submit */}
+
       <button className="btn">Submit</button> 
      </div>
      </div>
