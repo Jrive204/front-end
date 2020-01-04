@@ -13,7 +13,7 @@ function App() {
     <div>
       <Header />
     
-
+      <Route exact path="/" component={CombinedLoginForm}/>
       <Route path="/login" component={CombinedLoginForm}/>
       <Route path="/signup" component={CombinedSignUpForm}/>
     

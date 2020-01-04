@@ -4,6 +4,7 @@ import {axiosWithAuth}  from "../util/axiosWithAuth"
 import { Link } from 'react-router-dom'
 
 import "./Forms.css";
+
 // import loginImg from "../../login.jpg";
 
 
@@ -39,8 +40,8 @@ export default function SignUpForm() {
     <div className="form-group">
          
             {/* Start of UserName field */}
+      <div className="rectangle">
       <label htmlFor="username">
-       
        User Name
         <input type="text" 
         placeholder="username"
@@ -57,18 +58,20 @@ export default function SignUpForm() {
          {errors.userName && errors.userName.type === "maxLength" && (
           <span>Username is too long</span>
         )}
-
+</div>
         {/* End of UserName Field */}
 
         {/* Start of Full Name Field */}
       <label htmlFor="FullName"> Name
-        <span> Already a user? <Link tag={Link} to="/login">Sign In</Link> </span>
-      <input
-          type='text'
-          placeholder='Name'
-          name='FullName'
-          ref={register({ required: true, minLength: 3})}
-        />
+        <span> Already a user? 
+          <Link tag={Link} to="/login">Sign In</Link> 
+        </span>
+            <input
+                type='text'
+                placeholder='Name'
+                name='FullName'
+                ref={register({ required: true, minLength: 3})}
+            />
       
         {errors.FullName && errors.FullName.type === "required" && (
           <span>Please enter your name</span>
@@ -76,8 +79,8 @@ export default function SignUpForm() {
         {errors.FullName && errors.FullName.type === "minLength" && (
           <span>Name is too short</span>
         )}
-        {/* End of Full Name Field*/}
       </label>
+                  {/* End of Full Name Field*/}
 
       <label htmlFor="password">
         Password
@@ -95,18 +98,21 @@ export default function SignUpForm() {
           <span>Password is too short - 5 characters</span>
         )}
 
+        
         <label htmlFor="role">
             Select your role
           <select name="role"
+          className="select"
          ref={register({required: true})}
          >
           {errors.role && errors.role.type === "required" && (
           <span>Role is required</span>
         )}  
-          <option value="1 ">Diner</option>
+          <option value="1">Diner</option>
           <option value="2">Operator</option>
           </select>
         </label>
+        
 
       </div> 
       

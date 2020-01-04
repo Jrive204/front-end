@@ -19,6 +19,7 @@ export default function LoginForm() {
   //  https://lambda-food-truck.herokuapp.com/api/auth/login 
    .then(res => {
      console.log("success", res);
+     alert("login success, very nice")
     
    })
    .catch(err =>

@@ -33,13 +33,30 @@ input {
     border-radius: 4px;
     margin-bottom: 31px;
     transition: all 250ms ease-in-out;
+
+    
 }
 
 .image {
     width: 2em;
    
 }
-img {
-    width: 50% !important;
-    height: 50% !important;
+/* .rectangle {
+   
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+border: 1px solid rgba(25, 25, 25, 0.32);
+box-sizing: border-box;
+} */
+
+.select {
+    background-color: orange;
+    background: transparent;
+    border: none;
+    font-size: 14px;
+   height: 29px;
+   padding: 5px; 
 }
