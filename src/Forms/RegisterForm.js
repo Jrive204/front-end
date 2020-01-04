@@ -16,6 +16,7 @@ export default function RegisterForm() {
   //  https://lambda-food-truck.herokuapp.com/api/auth/register
    .then(res => {
      console.log("success", res);
+     alert("Sign up successful")
     
    })
    .catch(err =>

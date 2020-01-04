@@ -1,12 +1,7 @@
-.base-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 
-
+.container {
+    height: 75% !important;
 }
-
 .form-group {
     display: flex;
     flex-direction: column;
@@ -21,7 +16,7 @@
     
 }
 label {
-    font-size: 20px;
+    font-size: 10px;
     text-align: left;
     display: flex;
     flex-direction: column;
@@ -31,7 +26,7 @@ input {
     min-width: 18em;
     height: 37px;
     padding: 0px 10px;
-    font-size: 16px;
+    font-size: 15px;
     font-family: "Open Sans", sans-serif;
     background-color: #f3f3f3;
     border: 0;

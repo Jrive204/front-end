@@ -2,6 +2,7 @@ import React from 'react';
 import './App.scss';
 
 import CombinedForm from "./CombinedForm";
+import Header from "./components/Header";
 
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
    
     <div>
      
-   
+      <Header />
       <CombinedForm/>
      
     </div>
