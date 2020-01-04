@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import getTokens from "@kiwicom/orbit-components/lib/getTokens";
-import Button from "@kiwicom/orbit-components/lib/Button";
 
 // Inline styles in FieldSet, P tag ,h1 (spacing)
 
@@ -40,24 +38,7 @@ export const StyledTitleInput = styled.input`
   }
 `;
 
-export const customTokens = getTokens({
-  palette: {
-    product: {
-      light: "#E5F7FF",
-      lightHover: "#C7EEFF",
-      lightActive: "#A8E5FF",
-      normal: "#0172CB",
-      normalHover: "#0161AC",
-      normalActive: "#01508E",
-      dark: "#005AA3",
-      darkHover: "#004F8F",
-      darkActive: "#003E70",
-      darker: "#004680"
-    }
-  }
-});
-
-export const StyledButton = styled(Button)`
+export const StyledButton = styled.button`
   margin-left: 20px;
   font-weight: bold;
   margin-top: 1%;
