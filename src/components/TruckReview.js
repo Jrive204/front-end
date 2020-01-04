@@ -104,7 +104,7 @@ const TruckReview = props => {
       </StyledTruckReviewFormDiv>
       <StyledTruckReviewMap>
         <h2>Map Reviews</h2>
-        <p>Random shit</p>
+        <p>Random text</p>
       </StyledTruckReviewMap>
     </StyledTruckReviewDiv>
   );
