@@ -8,7 +8,6 @@ function App() {
     <div className='App'>
       <Header></Header>
       <TruckReview></TruckReview>
-      <p>Hello</p>
     </div>
   );
 }

@@ -27,7 +27,13 @@ export const StyledTitleInput = styled.input`
   max-width: 592px;
   margin-bottom: 1%;
   height: 30px;
+  :invalid {
+    box-shadow: 0 0 5px 1px red;
+  }
 
+  :focus:invalid {
+    box-shadow: none;
+  }
   ::placeholder {
     font-size: 1rem;
     color: gray;
