@@ -2,6 +2,8 @@ import React from "react";
 import { useForm} from "react-hook-form";
 import "./Forms.css";
 import {axiosWithAuth}  from "../util/axiosWithAuth"
+import { Link } from 'react-router-dom'
+
 // import axios from 'axios';
 
 
@@ -57,7 +59,9 @@ export default function LoginForm() {
       
         {/* Start of Password Field */}
         <label htmlFor="password">
+        <span> No Account? <Link tag={Link} to="/signup">Sign Up</Link> </span>
         Password
+       
         </label>
         <input type="password" 
         placeholder="Password"

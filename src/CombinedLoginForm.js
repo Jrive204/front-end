@@ -5,7 +5,7 @@ import "./CombinedForm.scss";
 
 import LoginForm from "./Forms/LoginForm"
 
-import RegisterForm from "./Forms/RegisterForm"
+import SignUpForm from "./Forms/SignUpForm"
 
 class CombinedForm extends React.Component {
   constructor(props) {
@@ -35,8 +35,8 @@ class CombinedForm extends React.Component {
 
   render() {
     const { isLogginActive } = this.state;
-    const current = isLogginActive ? "Register" : "Login";
-    const currentActive = isLogginActive ? "login" : "register";
+    const current = isLogginActive ? "Sign Up" : "Login";
+    const currentActive = isLogginActive ? "login" : "signup";
     return (
       <div className="App">
         <div className="login">
@@ -45,7 +45,7 @@ class CombinedForm extends React.Component {
               <LoginForm containerRef={ref => (this.current = ref)} />
             )}
             {!isLogginActive && (
-              <RegisterForm containerRef={ref => (this.current = ref)} />
+              <SignUpForm containerRef={ref => (this.current = ref)} />
             )}
           </div>
           <RightSide

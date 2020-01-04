@@ -1,13 +1,14 @@
 import React from "react";
 import {useForm} from "react-hook-form";
 import {axiosWithAuth}  from "../util/axiosWithAuth"
+import { Link } from 'react-router-dom'
 
 import "./Forms.css";
 // import loginImg from "../../login.jpg";
 
 
 
-export default function RegisterForm() {
+export default function SignUpForm() {
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = data => {
     console.log(data);
@@ -29,7 +30,7 @@ export default function RegisterForm() {
   return (
 
     <div className="base-container">
-          <div className="header">Register</div>
+          <div className="header">Sign Up</div>
           {/* <img src ={loginImg} alt="construction"/> */}
           
     
@@ -39,6 +40,7 @@ export default function RegisterForm() {
          
             {/* Start of UserName field */}
       <label htmlFor="username">
+       
        User Name
         <input type="text" 
         placeholder="username"
@@ -60,6 +62,7 @@ export default function RegisterForm() {
 
         {/* Start of Full Name Field */}
       <label htmlFor="FullName"> Name
+        <span> Already a user? <Link tag={Link} to="/login">Sign In</Link> </span>
       <input
           type='text'
           placeholder='Name'
