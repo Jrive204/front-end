@@ -1,6 +1,46 @@
 import styled from "styled-components";
 
+import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
+import { green } from "@material-ui/core/colors";
+import Fab from "@material-ui/core/Fab";
+
 // Inline styles in FieldSet, P tag ,h1 (spacing)
+export const useStyles = makeStyles(theme => ({
+  root: {
+    display: "flex",
+    alignItems: "center"
+  },
+  wrapper: {
+    margin: theme.spacing(1),
+    position: "relative",
+    display: "flex",
+    flexDirection: "row-reverse",
+    justifyContent: "flex-end",
+    alignItems: "flex-end"
+  },
+  buttonSuccess: {
+    backgroundColor: green[500],
+    "&:hover": {
+      backgroundColor: green[700]
+    }
+  },
+  fabProgress: {
+    color: green[500],
+    position: "absolute",
+    top: -3,
+    left: -6,
+    zIndex: 1
+  },
+  buttonProgress: {
+    color: green[500],
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    marginTop: -16,
+    marginLeft: -12
+  }
+}));
 
 export const Inputtextarea = styled.textarea`
   display: flex;
@@ -38,11 +78,27 @@ export const StyledTitleInput = styled.input`
   }
 `;
 
-export const StyledButton = styled.button`
-  margin-left: 20px;
+export const StyledButton = styled(Button)`
+  color: white;
+
+  &:hover {
+    background-color: rgb(24, 24, 24);
+  }
   font-weight: bold;
-  margin-top: 1%;
+  margin-top: 2%;
   margin-bottom: 1%;
+  background: black;
+  width: 50%;
+`;
+export const StyledFab = styled(Fab)`
+  background-color: black;
+  &:hover {
+    background-color: rgb(24, 24, 24);
+  }
+
+  /* text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden; */
 `;
 
 export const StyledRating = styled.div`
