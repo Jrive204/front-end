@@ -96,6 +96,8 @@ export const StyledFab = styled(Fab)`
     background-color: rgb(24, 24, 24);
   }
 
+  font-size: 0;
+
   /* text-indent: 100%;
   white-space: nowrap;
   overflow: hidden; */
