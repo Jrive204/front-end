@@ -6,7 +6,6 @@ export const HeaderStylesDiv = styled.div`
   left: 0px;
   top: 0px;
   padding: 10px 0;
-
   background: #131212;
 `;
 
@@ -18,7 +17,6 @@ export const Logodiv = styled.div`
   top: -23px;
   border-radius: 50%;
   color: white;
-
   background: #6a6767;
 `;
 
@@ -53,4 +51,6 @@ export const StyledImgLogo = styled.img`
   width: 45px;
   top: 37px;
   left: 78px;
+
 `;
+
