@@ -1,13 +1,12 @@
 
 import React from 'react';
 import './App.css';
-import {connect} from 'react-redux';
-
 import CombinedLoginForm from "./CombinedLoginForm";
 import CombinedSignUpForm from "./CombinedSignUpForm"
 import TruckReview from "./components/TruckReview";
 import Header from "./components/Header";
-import { Switch, Route } from "react-router-dom";
+import {connect} from "react-redux";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./Home";
 import TruckWall from "./components/TruckWall";
 import { GlobalStyle } from "./styles/GlobalStyles";
@@ -20,6 +19,7 @@ function App(props) {
   return (
 
     <div className='App'>
+      <Router>
       <GlobalStyle />
       <Header />
       <Switch>
@@ -38,7 +38,7 @@ function App(props) {
         <Route path="/signup" component={CombinedSignUpForm}/>
         
       </Switch>
-
+      </Router>
     </div>
   );
 }
