@@ -22,7 +22,6 @@ import Publish from "@material-ui/icons/Publish";
 import { useHistory } from "react-router-dom";
 
 const TruckReview = props => {
-  // eslint-disable-next-line no-unused-vars
   const classes = useStyles();
   const [hover, setHover] = useState(0);
   const { push } = useHistory();
@@ -152,8 +151,19 @@ const TruckReview = props => {
         {console.log(user, `user`)}
       </StyledTruckReviewFormDiv>
       <StyledTruckReviewMap>
-        <h2>Map Reviews</h2>
-        <p>Random text</p>
+        <h2>Map other Reviews here</h2>
+        <h3>Reviewer's name</h3>
+        <h4>Review Title</h4>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent in
+          sodales nibh. Duis sodales mattis malesuada. Morbi lorem urna,
+          hendrerit fringilla urna quis, ornare fermentum eros. Nam feugiat dui
+          orci, non fringilla odio consequat quis. Morbi tempor consequat arcu,
+          nec commodo est luctus vel. Suspendisse potenti. Proin tincidunt ac
+          mauris id placerat. Nulla egestas tempor nunc in tristique. Donec ut
+          viverra mi, sit amet aliquam dolor. Aliquam eget leo auctor, laoreet
+          sem vel, eleifend justo. In vehicula leo diam, ut vestibulum est.
+        </p>
       </StyledTruckReviewMap>
     </StyledTruckReviewDiv>
   );

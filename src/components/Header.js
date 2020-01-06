@@ -13,14 +13,14 @@ import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <HeaderStylesDiv>
-      <Logodiv>
-        <Link to='/'>
+      <Link to='/'>
+        <Logodiv>
           <StyledpFood>Food</StyledpFood>
           <StyledpTruck>Truck</StyledpTruck>
           <StyledpTrackR>TrackR</StyledpTrackR>
           <StyledImgLogo src={placeholder} alt='icon img'></StyledImgLogo>
-        </Link>
-      </Logodiv>
+        </Logodiv>
+      </Link>
     </HeaderStylesDiv>
   );
 };

@@ -97,10 +97,6 @@ export const StyledFab = styled(Fab)`
   }
 
   font-size: 0;
-
-  /* text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden; */
 `;
 
 export const StyledRating = styled.div`
@@ -126,14 +122,31 @@ export const StyledTruckReviewDiv = styled.div`
 `;
 
 export const StyledTruckReviewFormDiv = styled.div`
+  margin-right: 5%;
   display: flex;
   flex-direction: column;
   width: 65%;
 `;
 
 export const StyledTruckReviewMap = styled.div`
+  h2 {
+    align-self: flex-end;
+    margin-bottom: 0;
+  }
+  h3 {
+    margin-bottom: 0;
+  }
+  h4 {
+    margin: 0;
+  }
+  p {
+    font-size: 0.8rem;
+    margin-left: 20%;
+  }
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  flex-wrap: wrap;
+  align-items: center;
   width: 30%;
+  border-left: 1px dashed gray;
 `;
