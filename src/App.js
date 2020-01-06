@@ -13,7 +13,7 @@ import TruckCard from "./components/TruckCard";
 function App(props) { 
   console.log(props) 
   return (
-    <div className='App'>4
+    <div className='App'>
       <Router>
       <GlobalStyle />
       <Header />
