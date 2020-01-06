@@ -12,13 +12,16 @@ import "./Forms.css";
 export default function SignUpForm() {
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = data => {
-    console.log(data);
+    // console.log(data);
     axiosWithAuth()
    .post("https://reqres.in/api/users/", data)
+  
   //  https://lambda-food-truck.herokuapp.com/api/auth/register
+  // "https://reqres.in/api/users/"
+
    .then(res => {
      console.log("success", res);
-     alert("Sign up successful")
+    //  alert("Sign up successful")
     
    })
    .catch(err =>
@@ -45,17 +48,17 @@ export default function SignUpForm() {
        User Name
         <input type="text" 
         placeholder="username"
-        name="userName" 
+        name="username" 
         ref={register({ required: true, minLength: 6, maxLength: 15 })} />
       </label>
    
-      {errors.userName && errors.userName.type === "required" && (
+      {errors.username && errors.username.type === "required" && (
           <span>Please enter a username</span>
         )}
-        {errors.userName&& errors.userName.type === "minLength" && (
+        {errors.username&& errors.username.type === "minLength" && (
           <span>Username is too short</span>
         )}
-         {errors.userName && errors.userName.type === "maxLength" && (
+         {errors.username && errors.username.type === "maxLength" && (
           <span>Username is too long</span>
         )}
 </div>

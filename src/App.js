@@ -7,11 +7,14 @@ import CombinedSignUpForm from "./CombinedSignUpForm"
 import Header from "./components/Header";
 
 
+
+
 function App() {
   return (
    
     <div>
       <Header />
+    
     
       <Route exact path="/" component={CombinedLoginForm}/>
       <Route path="/login" component={CombinedLoginForm}/>

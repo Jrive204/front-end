@@ -4,6 +4,8 @@ import "./Forms.css";
 import {axiosWithAuth}  from "../util/axiosWithAuth"
 import { Link } from 'react-router-dom'
 
+
+
 // import axios from 'axios';
 
 
@@ -11,16 +13,19 @@ import { Link } from 'react-router-dom'
 
 export default function LoginForm() {
   const { register, handleSubmit, errors } = useForm();
-  
+
+ 
+
   const onSubmit = data => {
    console.log(data)
    axiosWithAuth()
-   .post("https://reqres.in/api/users/", data)
-  //  https://lambda-food-truck.herokuapp.com/api/auth/login 
-   .then(res => {
+   .post("https://lambda-food-truck.herokuapp.com/api/auth/login", data) 
+   
+  //  "https://reqres.in/api/users/", data
+  //  "https://lambda-food-truck.herokuapp.com/api/auth/login", data 
+  
+  .then(res => {
      console.log("success", res);
-     alert("login success, very nice")
-    
    })
    .catch(err =>
      console.log(err.response)
@@ -31,10 +36,7 @@ export default function LoginForm() {
 
     <div className="base-container">
           <div className="header">Login</div>
-         
-          
-    
-    <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
     <div className="form">
     <div className="form-group">
 
@@ -42,17 +44,17 @@ export default function LoginForm() {
       <label htmlFor="username">
        User Name
         <input type="text" 
-        name="userName" 
+        name="username" 
         placeholder="username"
         ref={register({ required: true, minLength: 6, maxLength: 15 })}  />
       </label>
-      {errors.userName && errors.userName.type === "required" && (
+      {errors.username && errors.username.type === "required" && (
           <span>Please enter a username</span>
         )}
-      {errors.userName&& errors.userName.type === "minLength" && (
+      {errors.username&& errors.username.type === "minLength" && (
           <span>Username is too short</span>
         )}
-         {errors.userName && errors.userName.type === "maxLength" && (
+         {errors.username && errors.username.type === "maxLength" && (
           <span>Username is too long</span>
         )}
 
@@ -78,10 +80,24 @@ export default function LoginForm() {
         )}
         {/* End of password field  */}
 
+        {/* <label htmlFor="role">
+            Select your role
+          <select name="role"
+          className="select"
+         ref={register({required: true})}
+         >
+          {errors.role && errors.role.type === "required" && (
+          <span>Role is required</span>
+        )}  
+          <option value="1">Diner</option>
+          <option value="2">Operator</option>
+          </select>
+        </label> */}
+        
       </div>
       
       <div className="footer">
-      {/* <button type="button" className="btn" >Submit */}
+     
       <button className="btn">Submit</button> 
      </div>
      </div>
@@ -90,3 +106,4 @@ export default function LoginForm() {
     </div>
   );
 }
+
