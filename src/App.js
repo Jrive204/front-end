@@ -1,5 +1,9 @@
-import React from "react";
-import "./App.css";
+
+import React from 'react';
+import './App.css';
+import {connect} from 'react-redux';
+
+
 import TruckReview from "./components/TruckReview";
 import Header from "./components/Header";
 import { Switch, Route } from "react-router-dom";
@@ -8,7 +12,9 @@ import TruckWall from "./components/TruckWall";
 import { GlobalStyle } from "./styles/GlobalStyles";
 import TruckCard from "./components/TruckCard";
 
-function App() {
+
+function App(props) {
+  console.log(props)
   return (
     <div className='App'>
       <GlobalStyle />
@@ -32,4 +38,14 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+    return {
+      users: state.users
+
+    };
+};
+
+export default connect(
+  mapStateToProps,
+  {}
+  )(App);
