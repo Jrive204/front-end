@@ -1,11 +1,15 @@
+
 import { useState, useRef } from "react";
+
 
 export function useFormState(initial, props) {
   const [user, setUser] = useState(initial);
   const [value, setValue] = useState(0);
+
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const timer = useRef();
+
 
   function handlechange(e) {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -13,6 +17,7 @@ export function useFormState(initial, props) {
 
   function handlestarchange(event, newValue) {
     setValue(newValue);
+
 
     setUser({ ...user, [event.target.name]: event.target.value });
   }
@@ -37,6 +42,7 @@ export function useFormState(initial, props) {
     }
   };
 
+
   function handlesubmit(e) {
     e.preventDefault();
     if (!user.title) return alert(`Missing Title`);
@@ -48,6 +54,7 @@ export function useFormState(initial, props) {
     setValue(0);
   }
   //might need to export setUser to edit post --
+
   return [
     user,
     handlechange,
@@ -59,3 +66,4 @@ export function useFormState(initial, props) {
     value
   ];
 }
+
