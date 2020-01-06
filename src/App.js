@@ -46,8 +46,8 @@ function App(props) {
 
 const mapStateToProps = (state) => {
     return {
-      users: state.users
-
+      users: state.users,
+      trucks: state.trucks
     };
 };
 

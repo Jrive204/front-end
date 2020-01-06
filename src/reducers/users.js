@@ -2,7 +2,11 @@ const initialState = {
     id: '',
     username: '',
     password: '',
-    email: ''
+    email: '',
+    role: 0,
+    latitude: null,
+    longitude: null,
+    trucks: []
 
 }
 
