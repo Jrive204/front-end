@@ -1,8 +1,8 @@
 
 import React from 'react';
 import './App.css';
-import CombinedLoginForm from "./CombinedLoginForm";
-import CombinedSignUpForm from "./CombinedSignUpForm"
+import LoginForm from "./Forms/LoginForm";
+import SignUpForm from "./Forms/SignUpForm"
 import TruckReview from "./components/TruckReview";
 import Header from "./components/Header";
 import {connect} from "react-redux";
@@ -11,11 +11,12 @@ import Home from "./Home";
 import TruckWall from "./components/TruckWall";
 import { GlobalStyle } from "./styles/GlobalStyles";
 import TruckCard from "./components/TruckCard";
+import PrivateRoute from "./util/PrivateRoute"
 
 
 
 function App(props) {
-  console.log(props)
+  
   return (
 
     <div className='App'>
@@ -24,18 +25,12 @@ function App(props) {
       <Header />
       <Switch>
         {/* Will use /:id instead of 'card' */}
-        <Route path='/trucks/card/review'>
-          <TruckReview />
-        </Route>
-        <Route path='/trucks/card'>
-          <TruckCard />
-        </Route>
-        <Route path='/trucks'>
-          <TruckWall />
-        </Route>
-        <Route exact path="/" component={CombinedLoginForm}/>
-        <Route path="/login" component={CombinedLoginForm}/>
-        <Route path="/signup" component={CombinedSignUpForm}/>
+        <PrivateRoute path='/trucks/card/review' component={TruckReview} />
+        <PrivateRoute path='/trucks/card' component={TruckCard} />
+        <PrivateRoute path='/trucks' component={TruckWall} />
+        <Route exact path="/" component={LoginForm}/>
+        {/* <Route exact path="/login" component={CombinedLoginForm}/> */}
+        <Route exact path="/signup" component={SignUpForm}/>
         
       </Switch>
       </Router>

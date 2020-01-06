@@ -6,8 +6,8 @@ export const getUsers = (resp) => dispatch => {
 
 };
 
-export const userLogin = () => dispatch => {
-
+export const userLogin = (resp) => dispatch => {
+    
 };
 
 export const userReg = () => dispatch => {
