@@ -1,8 +1,8 @@
 
 import React from 'react';
 import './App.css';
-import CombinedLoginForm from "./CombinedLoginForm";
-import CombinedSignUpForm from "./CombinedSignUpForm"
+import LoginForm from "./Forms/LoginForm";
+import SignUpForm from "./Forms/SignUpForm"
 import TruckReview from "./components/TruckReview";
 import Header from "./components/Header";
 import {connect} from "react-redux";
@@ -33,9 +33,9 @@ function App(props) {
         <Route path='/trucks'>
           <TruckWall />
         </Route>
-        <Route exact path="/" component={CombinedLoginForm}/>
-        <Route path="/login" component={CombinedLoginForm}/>
-        <Route path="/signup" component={CombinedSignUpForm}/>
+        <Route exact path="/" component={LoginForm}/>
+        <Route path="/login" component={LoginForm}/>
+        <Route path="/signup" component={SignUpForm}/>
         
       </Switch>
       </Router>

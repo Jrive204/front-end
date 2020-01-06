@@ -3,12 +3,7 @@ import { useForm} from "react-hook-form";
 import "./Forms.css";
 import {axiosWithAuth}  from "../util/axiosWithAuth"
 import { Link } from 'react-router-dom'
-
-
-
-// import axios from 'axios';
-
-
+import { Login, Container, Button} from "../styles/LoginRegisterStyles"
 
 
 export default function LoginForm() {
@@ -34,8 +29,9 @@ export default function LoginForm() {
 
   return (
 
-    <div className="base-container">
-          <div className="header">Login</div>
+    <Container>
+          <Login>Login
+          </Login>
       <form onSubmit={handleSubmit(onSubmit)}>
     <div className="form">
     <div className="form-group">
@@ -98,12 +94,12 @@ export default function LoginForm() {
       
       <div className="footer">
      
-      <button className="btn">Submit</button> 
+      <Button>Submit</Button> 
      </div>
      </div>
 
     </form>
-    </div>
+    </Container>
   );
 }
 
