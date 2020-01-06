@@ -1,8 +1,6 @@
 
 import React from 'react';
 import './App.css';
-import {connect} from 'react-redux';
-
 import CombinedLoginForm from "./CombinedLoginForm";
 import CombinedSignUpForm from "./CombinedSignUpForm"
 import TruckReview from "./components/TruckReview";

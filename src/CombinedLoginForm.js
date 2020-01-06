@@ -1,6 +1,6 @@
 
 import React from "react";
-import "./CombinedForm.scss";
+
 
 
 import LoginForm from "./Forms/LoginForm"
