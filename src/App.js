@@ -2,16 +2,19 @@ import React from "react";
 import "./App.css";
 import TruckReview from "./components/TruckReview";
 import Header from "./components/Header";
-import { Switch, Route } from "react-router-dom";
+import {connect} from "react-redux";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./Home";
 import TruckWall from "./components/TruckWall";
 import { GlobalStyle } from "./styles/GlobalStyles";
 import TruckCard from "./components/TruckCard";
 
-function App(props) {
-  console.log(props)
+
+function App(props) { 
+  console.log(props) 
   return (
-    <div className='App'>
+    <div className='App'>4
+      <Router>
       <GlobalStyle />
       <Header />
       <Switch>
@@ -29,6 +32,7 @@ function App(props) {
           <Home />
         </Route>
       </Switch>
+      </Router>
     </div>
   );
 }
