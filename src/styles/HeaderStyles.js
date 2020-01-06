@@ -13,7 +13,7 @@ export const Logodiv = styled.div`
   position: absolute;
   width: 135px;
   height: 140px;
-  left: 50%;
+  left: 46%;
   top: -23px;
   border-radius: 50%;
   color: white;
@@ -51,4 +51,6 @@ export const StyledImgLogo = styled.img`
   width: 45px;
   top: 37px;
   left: 78px;
+
 `;
+
