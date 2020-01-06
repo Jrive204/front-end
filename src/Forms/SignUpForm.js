@@ -1,6 +1,7 @@
 import React from "react";
 import {useForm} from "react-hook-form";
 import {axiosWithAuth}  from "../util/axiosWithAuth"
+
 import { Link } from 'react-router-dom'
 
 import "./Forms.css";
@@ -12,16 +13,16 @@ import "./Forms.css";
 export default function SignUpForm() {
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = data => {
-    // console.log(data);
+    console.log(data);
     axiosWithAuth()
-   .post("https://reqres.in/api/users/", data)
+   .post("https://lambda-food-truck.herokuapp.com/api/auth/register", data)
   
   //  https://lambda-food-truck.herokuapp.com/api/auth/register
   // "https://reqres.in/api/users/"
 
    .then(res => {
      console.log("success", res);
-    //  alert("Sign up successful")
+     alert("Sign up successful");
     
    })
    .catch(err =>
@@ -69,7 +70,7 @@ export default function SignUpForm() {
         <span> Already a user? 
           <Link tag={Link} to="/login">Sign In</Link> 
         </span>
-            <input
+            {/* <input
                 type='text'
                 placeholder='Name'
                 name='FullName'
@@ -81,7 +82,7 @@ export default function SignUpForm() {
         )}
         {errors.FullName && errors.FullName.type === "minLength" && (
           <span>Name is too short</span>
-        )}
+        )} */}
       </label>
                   {/* End of Full Name Field*/}
 
@@ -111,8 +112,8 @@ export default function SignUpForm() {
           {errors.role && errors.role.type === "required" && (
           <span>Role is required</span>
         )}  
-          <option value="1">Diner</option>
-          <option value="2">Operator</option>
+          <option value="2">Diner</option>
+          <option value="1">Operator</option>
           </select>
         </label>
         

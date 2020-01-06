@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom'
 
 
 
-export default function LoginForm() {
+export default function LoginForm(props) {
   const { register, handleSubmit, errors } = useForm();
 
  
@@ -26,6 +26,8 @@ export default function LoginForm() {
   
   .then(res => {
      console.log("success", res);
+     localStorage.setItem('token', res.data.token);
+     props.history.push('/trucks');
    })
    .catch(err =>
      console.log(err.response)
