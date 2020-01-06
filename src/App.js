@@ -1,6 +1,10 @@
 
 import React from 'react';
 import './App.css';
+import {connect} from 'react-redux';
+
+import CombinedLoginForm from "./CombinedLoginForm";
+import CombinedSignUpForm from "./CombinedSignUpForm"
 import TruckReview from "./components/TruckReview";
 import Header from "./components/Header";
 import {connect} from "react-redux";
@@ -11,9 +15,11 @@ import { GlobalStyle } from "./styles/GlobalStyles";
 import TruckCard from "./components/TruckCard";
 
 
-function App(props) { 
-  console.log(props) 
+
+function App(props) {
+  console.log(props)
   return (
+
     <div className='App'>
       <Router>
       <GlobalStyle />
@@ -29,14 +35,16 @@ function App(props) {
         <Route path='/trucks'>
           <TruckWall />
         </Route>
-        <Route path='/'>
-          <Home />
-        </Route>
+        <Route exact path="/" component={CombinedLoginForm}/>
+        <Route path="/login" component={CombinedLoginForm}/>
+        <Route path="/signup" component={CombinedSignUpForm}/>
+        
       </Switch>
       </Router>
     </div>
   );
 }
+
 
 const mapStateToProps = (state) => {
     return {
@@ -49,3 +57,4 @@ export default connect(
   mapStateToProps,
   {}
   )(App);
+
