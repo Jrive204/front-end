@@ -1,5 +1,9 @@
-import React from "react";
-import "./App.css";
+
+import React from 'react';
+import './App.css';
+
+
+
 import TruckReview from "./components/TruckReview";
 import Header from "./components/Header";
 import {connect} from "react-redux";
