@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
@@ -7,6 +7,8 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import { Link } from "react-router-dom";
 import { useStyles, StyledFav, StyledRatings } from "../styles/TruckWallStyles";
 import Rating from "@material-ui/lab/Rating";
+import axios from "axios";
+import { axiosWithAuth } from "../util/axiosWithAuth";
 
 import data from "../data.test";
 
@@ -15,10 +17,23 @@ const TruckWall = () => {
   const [trucks] = useState(data);
   const [value, setValue] = useState(false);
   const [favorite, setFavorite] = useState([]);
+  const [searchName, setSearchName] = useState(``);
 
   const MAX_LENGTH = 250;
 
   console.log(trucks.length);
+  useEffect(() => {
+    axiosWithAuth()
+      .get(`https://lambda-food-truck.herokuapp.com/api/trucks `)
+      .then(response => {
+        console.log(response, "data");
+        // let people = response.data.results.filter(character =>
+        //   character.name.toLowerCase().includes(searchName.toLowerCase().trim())
+        // );
+        // console.log(people, `YOOO`);
+        // setCharlist(people);
+      });
+  }, []);
 
   return (
     <>
