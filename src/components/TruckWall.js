@@ -17,25 +17,92 @@ const TruckWall = () => {
   const [trucklist, setTruckList] = useState([]);
   const [favorite, setFavorite] = useState([]);
   const [searchName, setSearchName] = useState(``);
+  const [searchfilter, setSearchFilter] = useState([]);
 
   const MAX_LENGTH = 250;
 
-  // console.log(trucks.length);
+  useEffect(() => {
+    window.ymaps.ready(function() {
+      const myMap = new window.ymaps.Map(
+        "map",
+        {
+          center: [28.165225, -81.473601],
+          zoom: 10
+        },
+        {
+          searchControlProvider: "yandex#search"
+        }
+      );
+
+      const myGeoObject = new window.ymaps.GeoObject(
+        {
+          geometry: {
+            type: "Point",
+            coordinates: [28.165225, -81.473601]
+          },
+
+          properties: {
+            hintContent: "testing",
+            balloonContent: "HELLO"
+          }
+        },
+
+        {
+          iconLayout: "default#imageWithContent",
+          iconImageHref:
+            "https://image.flaticon.com/icons/svg/1365/1365579.svg",
+          iconImageSize: [35, 42],
+          iconImageOffset: [-3, -42],
+          iconContentOffset: [-3, -42]
+        }
+      );
+
+      myMap.geoObjects.add(myGeoObject);
+
+      var myPlacemark = new window.ymaps.Placemark(
+        [29.165225, -81.473601],
+        {},
+
+        {
+          iconLayout: "default#image",
+          iconImageHref:
+            "https://image.flaticon.com/icons/svg/1365/1365579.svg",
+          iconImageSize: [30, 42],
+          iconImageOffset: [-3, -42]
+        }
+      );
+      myMap.geoObjects.add(myPlacemark);
+    });
+  }, []);
+
   useEffect(() => {
     axiosWithAuth()
       .get(`https://lambda-food-truck.herokuapp.com/api/trucks `)
       .then(response => {
-        console.log(response.data, "data");
         let trucks = response.data.filter(truck =>
           truck.cuisine.toLowerCase().includes(searchName.toLowerCase().trim())
         );
-        console.log(trucks, `YOOO`);
+
+        //when we have data will change cuisine to name so we can filter by name also
+        let namefilter = response.data.filter(truck =>
+          truck.cuisine.toLowerCase().includes(searchName.toLowerCase().trim())
+        );
+        console.log(response.data, `YOOO`);
+        setSearchFilter(namefilter);
         setTruckList(trucks);
       });
   }, [searchName]);
 
   return (
     <>
+      <div
+        id='map'
+        style={{
+          margin: "0 auto",
+          marginTop: "4%",
+          width: "450px",
+          height: "250px"
+        }}></div>
       <SearchBar setSearchName={setSearchName}></SearchBar>
       {trucklist.map((truck, index) => (
         <div key={truck.id} className={classes.root}>
@@ -65,7 +132,7 @@ const TruckWall = () => {
                         align='left'
                         gutterBottom
                         variant='h5'>
-                        {truck.name}
+                        {truck.name}Title
                       </Typography>
                     </Link>
                     <StyledRatings>
@@ -73,7 +140,7 @@ const TruckWall = () => {
                         className={classes.stars}
                         name='half-rating'
                         // trucks.length will = reviews.length
-                        value={truck.stars / trucklist.length}
+                        value={truck.avgRating}
                         precision={0.5}
                         readOnly>
                         {console.log(trucklist.length, "reviews")}
@@ -82,7 +149,7 @@ const TruckWall = () => {
                         {trucklist.length} reviews
                       </span>
                     </StyledRatings>
-                    <span style={{ fontSize: "1rem" }}>
+                    <span style={{ fontSize: "1.2rem" }}>
                       Cuisine: {truck.cuisine}
                     </span>
                     <Typography
@@ -97,7 +164,7 @@ const TruckWall = () => {
                           <Link to='/trucks/card'>Read more</Link>
                         </p>
                       ) : (
-                        <>{truck.description}</>
+                        <>{truck.description} description</>
                       )}
                     </Typography>
                   </Grid>
