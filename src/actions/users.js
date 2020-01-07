@@ -2,13 +2,10 @@ export const GET_USER_DATA = 'GET_USER_DATA';
 
 
 export const getUsers = (resp) => dispatch => {
-    dispatch({action: GET_USER_DATA, payload: resp})
+    dispatch({type: GET_USER_DATA, payload: resp})
 
 };
 
-export const userLogin = (resp) => dispatch => {
-    
-};
 
 export const userReg = () => dispatch => {
 
