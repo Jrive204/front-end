@@ -1,18 +1,21 @@
 import styled from 'styled-components';
 
 export const Login = styled.div `
-  width: 27em;
-  height: 10em;
-  min-height: 4em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 5px;
-  position: relative;
-  z-index: 99;
-  `
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 28px;
+
+
+color: #5A4E4E;
+mix-blend-mode: normal;
+`
   
   export const Container = styled.div `
+margin-top: 3rem;
+
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -43,4 +46,32 @@ export const Login = styled.div `
   }
   &:focus {
     outline: none;
+  `
+  export const Body = styled.p `
+  
+width: 20%;
+
+
+    /* Body 2 / Roboto Regular */
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    /* or 143% */
+
+    letter-spacing: 0.25px;
+
+    /* Smoke - Text */
+
+    color: #5A4E4E;
+    mix-blend-mode: normal;
+
+  `
+
+  export const Rectangle = styled.div `
+  border: 1px solid rgba(25, 25, 25, 0.32);
+box-sizing: border-box;
+  
   `
