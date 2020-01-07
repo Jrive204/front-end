@@ -1,8 +1,8 @@
 import React from "react";
-import { Link, useParams, useRouteMatch } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 
 const TruckCard = props => {
-  const { path, url } = useRouteMatch();
+  const { url } = useRouteMatch();
   console.log(props, `props!!`);
 
   // const { id } = useParams();

@@ -19,10 +19,9 @@ import clsx from "clsx";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import CheckIcon from "@material-ui/icons/Check";
 import Publish from "@material-ui/icons/Publish";
-import { useHistory, useRouteMatch } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const TruckReview = props => {
-  const { url } = useRouteMatch();
   const classes = useStyles();
   const [hover, setHover] = useState(0);
   const { push } = useHistory();

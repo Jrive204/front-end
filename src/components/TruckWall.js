@@ -9,7 +9,6 @@ import { useStyles, StyledFav, StyledRatings } from "../styles/TruckWallStyles";
 import Rating from "@material-ui/lab/Rating";
 import { axiosWithAuth } from "../util/axiosWithAuth";
 
-import data from "../data.test";
 import SearchBar from "./SearchBar";
 
 const TruckWall = () => {

@@ -6,7 +6,6 @@ import TruckReview from "./components/TruckReview";
 import Header from "./components/Header";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./Home";
 import TruckWall from "./components/TruckWall";
 import { GlobalStyle } from "./styles/GlobalStyles";
 import TruckCard from "./components/TruckCard";
