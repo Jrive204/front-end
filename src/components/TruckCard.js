@@ -16,8 +16,7 @@ const TruckCard = props => {
           pathname: `${url}/review`,
           state: { value: props.location.state.value }
         }}>
-        {" "}
-        Write Review{" "}
+        Write Review
       </Link>
     </div>
   );
