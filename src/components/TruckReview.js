@@ -19,13 +19,13 @@ import clsx from "clsx";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import CheckIcon from "@material-ui/icons/Check";
 import Publish from "@material-ui/icons/Publish";
-import { useHistory } from "react-router-dom";
+import { useHistory, useRouteMatch } from "react-router-dom";
 
 const TruckReview = props => {
+  const { url } = useRouteMatch();
   const classes = useStyles();
   const [hover, setHover] = useState(0);
   const { push } = useHistory();
-
   const [
     user,
     handlechange,
@@ -64,7 +64,8 @@ const TruckReview = props => {
   return (
     <StyledTruckReviewDiv>
       <StyledTruckReviewFormDiv>
-        <h1>&nbsp; Map Truck Title </h1>
+        <h1>&nbsp; Map Truck Title {console.log(props, `propsagain`)}</h1>
+
         <form id='ReviewForm' onSubmit={handleButtonClick}>
           <fieldset style={{ border: `0` }} className='formfield'>
             <label className='forms'>
@@ -137,7 +138,7 @@ const TruckReview = props => {
                   {/* Will Pushing Back to Truck Wall */}
                   {success
                     ? setTimeout(() => {
-                        push("/trucks/card");
+                        push(`/trucks/${props.match.params}`);
                       }, 1500)
                     : null}
                 </StyledFab>

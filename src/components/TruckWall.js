@@ -109,7 +109,11 @@ const TruckWall = () => {
           <Paper elevation={10} className={classes.paper}>
             <Grid container spacing={2}>
               <Grid item>
-                <Link to='/trucks/card'>
+                <Link
+                  to={{
+                    pathname: `/trucks/${truck.id}`,
+                    state: { value: truck }
+                  }}>
                   <ButtonBase className={classes.image}>
                     <img
                       className={classes.img}
@@ -122,7 +126,12 @@ const TruckWall = () => {
               <Grid item xs={12} sm container className={classes.grid}>
                 <Grid item xs container direction='column' spacing={2}>
                   <Grid item xs>
-                    <Link style={{ textDecoration: "none" }} to='/trucks/card'>
+                    <Link
+                      style={{ textDecoration: "none" }}
+                      to={{
+                        pathname: `/trucks/${truck.id}`,
+                        state: { value: truck }
+                      }}>
                       <Typography
                         style={{
                           fontSize: "1.6rem",
@@ -161,7 +170,13 @@ const TruckWall = () => {
                       truck.description.length > MAX_LENGTH ? (
                         <p>
                           {`${truck.description.substring(0, MAX_LENGTH)}...`}
-                          <Link to='/trucks/card'>Read more</Link>
+                          <Link
+                            to={{
+                              pathname: `/trucks/${truck.id}`,
+                              state: { value: truck }
+                            }}>
+                            Read more
+                          </Link>
                         </p>
                       ) : (
                         <>{truck.description} description</>
