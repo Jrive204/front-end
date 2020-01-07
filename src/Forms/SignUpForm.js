@@ -3,26 +3,26 @@ import {useForm} from "react-hook-form";
 import {axiosWithAuth}  from "../util/axiosWithAuth"
 
 import { Link } from 'react-router-dom'
-
+import { Login, Container, Button} from "../styles/LoginRegisterStyles"
 import "./Forms.css";
 
 // import loginImg from "../../login.jpg";
 
 
 
-export default function SignUpForm() {
+export default function SignUpForm(props) {
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = data => {
     console.log(data);
     axiosWithAuth()
    .post("https://lambda-food-truck.herokuapp.com/api/auth/register", data)
   
-  //  https://lambda-food-truck.herokuapp.com/api/auth/register
-  // "https://reqres.in/api/users/"
-
    .then(res => {
      console.log("success", res);
-     alert("Sign up successful");
+
+     localStorage.setItem('token', res.data.token);
+      props.history.push('/trucks');
+
     
    })
    .catch(err =>
@@ -34,9 +34,9 @@ export default function SignUpForm() {
 
   return (
 
-    <div className="base-container">
-          <div className="header">Sign Up</div>
-          {/* <img src ={loginImg} alt="construction"/> */}
+    <Container>
+          <Login>Sign Up</Login>
+        
           
     
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -65,17 +65,19 @@ export default function SignUpForm() {
 </div>
         {/* End of UserName Field */}
 
-        {/* Start of Full Name Field */}
-      <label htmlFor="FullName"> Name
+
+        
         <span> Already a user? 
           <Link tag={Link} to="/">Sign In</Link> 
         </span>
             
-      </label>
                   {/* End of Full Name Field*/}
 
+
       <label htmlFor="password">
-        Password
+        Password <span> Already a user? 
+          <Link tag={Link} to="/login">Sign In</Link> 
+        </span>
         </label>
         <input type="password" 
         placeholder="Password"
@@ -110,11 +112,11 @@ export default function SignUpForm() {
       
       <div className="footer">
 
-      <button className="btn">Submit</button> 
+      <Button>Submit</Button> 
      </div>
      </div>
 
     </form>
-    </div>
+    </Container>
   );
 }

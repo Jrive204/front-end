@@ -1,11 +1,14 @@
 
 import React from "react";
-
-
-
 import LoginForm from "./Forms/LoginForm"
 
 import SignUpForm from "./Forms/SignUpForm"
+import { Login, Container, Rightside} from "./styles/LoginRegisterStyles"
+
+
+
+
+
 
 class CombinedForm extends React.Component {
   constructor(props) {
@@ -39,22 +42,22 @@ class CombinedForm extends React.Component {
     const currentActive = isLogginActive ? "login" : "signup";
     return (
       <div className="App">
-        <div className="login">
-          <div className="container" ref={ref => (this.container = ref)}>
+        <Login>
+          <Container ref={ref => (this.container = ref)}>
             {isLogginActive && (
               <LoginForm containerRef={ref => (this.current = ref)} />
             )}
             {!isLogginActive && (
               <SignUpForm containerRef={ref => (this.current = ref)} />
             )}
-          </div>
+          </Container>
           <RightSide
             current={current}
             currentActive={currentActive}
             containerRef={ref => (this.rightSide = ref)}
             onClick={this.changeState.bind(this)}
           />
-        </div>
+        </Login>
       </div>
     );
   }
@@ -62,15 +65,14 @@ class CombinedForm extends React.Component {
 
 const RightSide = props => {
   return (
-    <div
-      className="right-side"
+    <Rightside
       ref={props.containerRef}
       onClick={props.onClick}
     >
       <div className="inner-container">
         <div className="text">{props.current}</div>
       </div>
-    </div>
+    </Rightside>
   );
 };
 

@@ -14,6 +14,7 @@ import data from "../data.test";
 const TruckWall = () => {
   const classes = useStyles();
   const [trucks] = useState(data);
+  const [value, setValue] = useState(false);
   const [favorite, setFavorite] = useState([]);
 
   const MAX_LENGTH = 250;
@@ -99,22 +100,29 @@ const TruckWall = () => {
                     </Typography>
                   </Grid>
                   <Grid item>
-                    <StyledFav
-                      name='Favorite'
-                      value={0}
-                      onChange={event => {
-                        console.log("Hello once");
-                      }}
-                      max={1}
-                      icon={<FavoriteIcon fontSize='inherit' />}
-                    />
-
-                    <Typography
-                      align='right'
-                      variant='body2'
-                      style={{ cursor: "pointer" }}>
-                      Remove
-                    </Typography>
+                    {!value ? (
+                      <StyledFav
+                        name='Favorite'
+                        value={0}
+                        onChange={(event, newValue) => {
+                          setValue(!value);
+                          console.log("Hello once");
+                        }}
+                        max={1}
+                        icon={<FavoriteIcon fontSize='inherit' />}
+                      />
+                    ) : (
+                      <StyledFav
+                        name='Favorite'
+                        value={1}
+                        onChange={(event, newValue) => {
+                          setValue(!value);
+                          console.log("Hello once");
+                        }}
+                        max={1}
+                        icon={<FavoriteIcon fontSize='inherit' />}
+                      />
+                    )}
                   </Grid>
                 </Grid>
                 <Grid style={{ width: "25%" }}>
