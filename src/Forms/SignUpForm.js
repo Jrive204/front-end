@@ -3,7 +3,7 @@ import {useForm} from "react-hook-form";
 import {axiosWithAuth}  from "../util/axiosWithAuth"
 
 import { Link } from 'react-router-dom'
-import { Login, Container, Button} from "../styles/LoginRegisterStyles"
+import { Login, Container, Button, Body} from "../styles/LoginRegisterStyles"
 import "./Forms.css";
 
 // import loginImg from "../../login.jpg";
@@ -35,7 +35,12 @@ export default function SignUpForm(props) {
   return (
 
     <Container>
-          <Login>Sign Up</Login>
+          <Login>
+            Sign Up
+          </Login>
+          <Body>
+            Enter a username and password to create an account. Your privacy is important to us and will not be shared.
+          </Body>
         
           
     
@@ -66,18 +71,20 @@ export default function SignUpForm(props) {
         {/* End of UserName Field */}
 
 
-        
+        <label htmlFor="password">
         <span> Already a user? 
-          <Link tag={Link} to="/login">Sign In</Link> 
+          <Link tag={Link} to="/"> 
+          
+          Sign In
+          
+          </Link> 
         </span>
             
                   {/* End of Full Name Field*/}
 
 
-      <label htmlFor="password">
-        Password <span> Already a user? 
-          <Link tag={Link} to="/login">Sign In</Link> 
-        </span>
+     
+        Password 
         </label>
         <input type="password" 
         placeholder="Password"
