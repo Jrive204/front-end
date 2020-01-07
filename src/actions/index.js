@@ -1,9 +1,16 @@
 export {
+    GET_USER_DATA,
     getUsers
 
 } from './users';
 
 export {
-    getTrucks
+    GET_TRUCKS,
+    ADD_TRUCK,
+    DELETE_TRUCK,
+    getTrucks,
+    editTrucks,
+    deleteTrucks,
+    addTrucks
 
 } from './trucks';

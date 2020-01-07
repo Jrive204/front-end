@@ -21,7 +21,7 @@ export default function SignUpForm(props) {
         console.log("success", res);
 
         localStorage.setItem("token", res.data.token);
-        props.history.push("/trucks");
+        props.history.push("/home");
       })
       .catch(err => 
         alert(err.response.data.username));
@@ -32,7 +32,6 @@ export default function SignUpForm(props) {
   return (
 
     <div className='base-container'>
-      <div className='header'>Sign Up</div>
       {/* <img src ={loginImg} alt="construction"/> */}
 
       <Container>
