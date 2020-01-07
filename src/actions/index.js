@@ -8,6 +8,7 @@ export {
     GET_TRUCKS,
     ADD_TRUCK,
     DELETE_TRUCK,
+    EDIT_TRUCK,
     getTrucks,
     editTrucks,
     deleteTrucks,

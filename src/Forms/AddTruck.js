@@ -28,6 +28,7 @@ const AddTruck = (props) => {
                 <input name="imageUrl" ref={register}/></label>
             <label>Cuisine: 
                 <input name="cuisine" ref={register}/></label>
+            
             <button>Add</button>
             </form>
         </div>

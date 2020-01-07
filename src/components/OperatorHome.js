@@ -44,6 +44,7 @@ const OperatorHome = (props) => {
                         <p>Cuisine: {truck.cuisine}</p>
                         <br />
                         <button onClick={(e) => deleteTruck(e, truck.id)}>delete</button>
+                        <Link to={{pathname:`/home/trucks/${truck.id}`, state: { truck: truck}}}>Edit Truck</Link>
                         </div>
                     )}
                 </div>

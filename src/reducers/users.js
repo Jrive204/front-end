@@ -1,4 +1,4 @@
-import {GET_USER_DATA,ADD_TRUCK,DELETE_TRUCK} from '../actions';
+import {GET_USER_DATA,ADD_TRUCK,DELETE_TRUCK,EDIT_TRUCK} from '../actions';
 
 
 const initialState = {
@@ -31,6 +31,13 @@ const userReducer = (state = initialState, action) => {
                 ...state,
                 trucks: [...state.trucks.filter(item => item.id != action.payload)]
             }
+        case EDIT_TRUCK:
+            return {
+                ...state,
+                trucks: [...state.trucks.forEach(item => {
+
+                })]
+            };
         default:
             return state;
     }

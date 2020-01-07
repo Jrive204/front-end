@@ -1,14 +1,26 @@
 
+import {axiosWithAuth} from '../util/axiosWithAuth';
+
 export const GET_TRUCKS = 'GET_TRUCKS';
 export const ADD_TRUCK = 'ADD_TRUCK'; 
 export const DELETE_TRUCK = 'DELETE_TRUCK';
+export const EDIT_TRUCK = 'EDIT_TRUCK';
+
+
 export const getTrucks = (load) => dispatch => {
     dispatch({type: GET_TRUCKS, payload: load});
 
 };
 
-export const editTrucks = () => dispatch => {
-
+export const editTrucks = (update, id) => dispatch => {
+    console.log(update);
+    axiosWithAuth()
+    .put(`https://lambda-food-truck.herokuapp.com/api/trucks/${id}`,update)
+    .then(resp => {
+        console.log(resp);
+        dispatch({type: EDIT_TRUCK, payload: update})
+    })
+    .error(err => console.log(err));
 
 };
 
