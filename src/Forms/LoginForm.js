@@ -19,7 +19,7 @@ export default function LoginForm(props) {
   .then(res => {
      console.log("success", res);
      localStorage.setItem('token', res.data.token);
-     props.history.push('/trucks');
+     props.history.push('/home');
    })
    .catch(err =>
      console.log(err.response)

@@ -1,3 +1,5 @@
+import {GET_TRUCKS} from '../actions';
+
 const initialState = {
     trucks:[]
 
@@ -5,6 +7,10 @@ const initialState = {
 
 const trucksReducer = (state = initialState, action) => {
     switch(action.type){
+        case GET_TRUCKS:
+            return { 
+                trucks: [...state.trucks, action.payload] 
+            };
         default:
             return state;
     }
