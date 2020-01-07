@@ -1,38 +1,45 @@
+
 .container {
-  height: 75% !important;
+    height: 75% !important;
 }
 .form-group {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: fit-content;
+    
 }
 .form {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
+ 
+    
 }
 label {
-  /* font-size: 10px; */
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-}
+    font-size: 10px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}   
 input {
-  margin-top: 1px;
-  min-width: 18em;
-  height: 37px;
-  padding: 0px 10px;
-  font-size: 15px;
-  font-family: "Open Sans", sans-serif;
-  background-color: #f3f3f3;
-  border: 0;
-  border-radius: 4px;
-  margin-bottom: 31px;
-  transition: all 250ms ease-in-out;
+    margin-top: 1px;
+    min-width: 18em;
+    height: 37px;
+    padding: 0px 10px;
+    font-size: 15px;
+    font-family: "Open Sans", sans-serif;
+    background-color: #f3f3f3;
+    border: 0;
+    border-radius: 4px;
+    margin-bottom: 31px;
+    transition: all 250ms ease-in-out;
+
+    
 }
 
 .image {
-  width: 2em;
+    width: 2em;
+   
 }
 /* .rectangle {
    
@@ -46,10 +53,10 @@ box-sizing: border-box;
 } */
 
 .select {
-  background-color: orange;
-  background: transparent;
-  border: none;
-  font-size: 14px;
-  height: 29px;
-  padding: 5px;
+    background-color: orange;
+    background: transparent;
+    border: none;
+    font-size: 14px;
+   height: 29px;
+   padding: 5px; 
 }
