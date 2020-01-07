@@ -23,7 +23,10 @@ export default function SignUpForm(props) {
         localStorage.setItem("token", res.data.token);
         props.history.push("/trucks");
       })
-      .catch(err => console.log(err.response));
+      .catch(err => 
+        alert(err.response.data.username));
+  
+
   };
 
   return (
@@ -34,6 +37,9 @@ export default function SignUpForm(props) {
 
       <Container>
         <Login>Sign Up</Login>
+          <Body>
+            Enter a username and password to create your account. Your privacy is important to us and will not be shared.
+          </Body>
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className='form'>
@@ -63,6 +69,8 @@ export default function SignUpForm(props) {
                 {errors.username && errors.username.type === "maxLength" && (
                   <span>Username is too long</span>
                 )}
+              
+                
               </div>
               {/* End of UserName Field */}
 
