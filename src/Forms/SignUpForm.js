@@ -67,9 +67,7 @@ export default function SignUpForm(props) {
 
 
         
-        <span> Already a user? 
-          <Link tag={Link} to="/">Sign In</Link> 
-        </span>
+        
             
                   {/* End of Full Name Field*/}
 
