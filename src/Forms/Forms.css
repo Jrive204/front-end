@@ -12,7 +12,6 @@
   flex-direction: column;
 }
 label {
-  /* font-size: 10px; */
   text-align: left;
   display: flex;
   flex-direction: column;

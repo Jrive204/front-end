@@ -1,120 +1,117 @@
 import React from "react";
-import {useForm} from "react-hook-form";
-import {axiosWithAuth}  from "../util/axiosWithAuth"
+import { useForm } from "react-hook-form";
+import { axiosWithAuth } from "../util/axiosWithAuth";
+
 
 import { Link } from 'react-router-dom'
-import { Login, Container, Button} from "../styles/LoginRegisterStyles"
+import { Login, Container, Button, Body} from "../styles/LoginRegisterStyles"
+
 import "./Forms.css";
 
 // import loginImg from "../../login.jpg";
-
-
 
 export default function SignUpForm(props) {
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = data => {
     console.log(data);
     axiosWithAuth()
-   .post("https://lambda-food-truck.herokuapp.com/api/auth/register", data)
-  
-   .then(res => {
-     console.log("success", res);
+      .post("https://lambda-food-truck.herokuapp.com/api/auth/register", data)
 
-     localStorage.setItem('token', res.data.token);
-      props.history.push('/trucks');
+      .then(res => {
+        console.log("success", res);
 
-    
-   })
-   .catch(err =>
-     console.log(err.response)
-   );
-  
-
+        localStorage.setItem("token", res.data.token);
+        props.history.push("/trucks");
+      })
+      .catch(err => console.log(err.response));
   };
 
   return (
 
-    <Container>
-          <Login>Sign Up</Login>
-        
-          
-    
-    <form onSubmit={handleSubmit(onSubmit)}>
-    <div className="form">
-    <div className="form-group">
-         
-            {/* Start of UserName field */}
-      <div className="rectangle">
-      <label htmlFor="username">
-       User Name
-        <input type="text" 
-        placeholder="username"
-        name="username" 
-        ref={register({ required: true, minLength: 6, maxLength: 15 })} />
-      </label>
-   
-      {errors.username && errors.username.type === "required" && (
-          <span>Please enter a username</span>
-        )}
-        {errors.username&& errors.username.type === "minLength" && (
-          <span>Username is too short</span>
-        )}
-         {errors.username && errors.username.type === "maxLength" && (
-          <span>Username is too long</span>
-        )}
-</div>
-        {/* End of UserName Field */}
+    <div className='base-container'>
+      <div className='header'>Sign Up</div>
+      {/* <img src ={loginImg} alt="construction"/> */}
 
+      <Container>
+        <Login>Sign Up</Login>
 
-        
-        
-            
-                  {/* End of Full Name Field*/}
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className='form'>
+            <div className='form-group'>
+              {/* Start of UserName field */}
+              <div className='rectangle'>
+                <label htmlFor='username'>
+                  User Name
+                  <input
+                    type='text'
+                    placeholder='username'
+                    name='username'
+                    ref={register({
+                      required: true,
+                      minLength: 6,
+                      maxLength: 15
+                    })}
+                  />
+                </label>
 
+                {errors.username && errors.username.type === "required" && (
+                  <span>Please enter a username</span>
+                )}
+                {errors.username && errors.username.type === "minLength" && (
+                  <span>Username is too short</span>
+                )}
+                {errors.username && errors.username.type === "maxLength" && (
+                  <span>Username is too long</span>
+                )}
+              </div>
+              {/* End of UserName Field */}
 
-      <label htmlFor="password">
-        Password <span> Already a user? 
-          <Link tag={Link} to="/login">Sign In</Link> 
-        </span>
-        </label>
-        <input type="password" 
-        placeholder="Password"
-        name="password" 
-        ref={register({required: true, minLength: 5})} />
-     
-   
-      {errors.password && errors.password.type === "required" && (
-          <span>Password is required</span>
-        )}
-        {errors.password && errors.password.type === "minLength" && (
-          <span>Password is too short - 5 characters</span>
-        )}
+              {/* End of Full Name Field*/}
 
-        
-        <label htmlFor="role">
-            Select your role
-          <select name="role"
-          className="select"
-         ref={register({required: true})}
-         >
-          {errors.role && errors.role.type === "required" && (
-          <span>Role is required</span>
-        )}  
-          <option value="2">Diner</option>
-          <option value="1">Operator</option>
-          </select>
-        </label>
-        
+              <label htmlFor='password'>
+                Password{" "}
+                <span>
+                  Already a user?
+                  <Link tag={Link} to='/'>
+                    Sign In
+                  </Link>
+                </span>
+              </label>
+              <input
+                type='password'
+                placeholder='Password'
+                name='password'
+                ref={register({ required: true, minLength: 5 })}
+              />
 
-      </div> 
-      
-      <div className="footer">
+              {errors.password && errors.password.type === "required" && (
+                <span>Password is required</span>
+              )}
+              {errors.password && errors.password.type === "minLength" && (
+                <span>Password is too short - 5 characters</span>
+              )}
 
-      <Button>Submit</Button> 
-     </div>
-     </div>
+              <label htmlFor='role'>
+                Select your role
+                <select
+                  name='role'
+                  className='select'
+                  ref={register({ required: true })}>
+                  {errors.role && errors.role.type === "required" && (
+                    <span>Role is required</span>
+                  )}
+                  <option value='2'>Diner</option>
+                  <option value='1'>Operator</option>
+                </select>
+              </label>
+            </div>
 
-    </form>
-    </Container>
+            <div className='footer'>
+              <Button>Submit</Button>
+            </div>
+          </div>
+        </form>
+      </Container>
+    </div>
   );
 }
