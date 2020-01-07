@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import {addTrucks} from '../actions';
 import {axiosWithAuth} from '../util/axiosWithAuth';
 
+import {Container, Button} from "../styles/LoginRegisterStyles"
+
 const AddTruck = (props) => {
     const {handleSubmit, register, errors} = useForm();
     const onSubmit = values => {
@@ -20,7 +22,7 @@ const AddTruck = (props) => {
         console.log(values);
     }
     return(<>
-        <div>
+        <Container>
             <form onSubmit={handleSubmit(onSubmit)}>
             <label>Name: 
                 <input name="name" ref={register} /></label>
@@ -28,9 +30,9 @@ const AddTruck = (props) => {
                 <input name="imageUrl" ref={register}/></label>
             <label>Cuisine: 
                 <input name="cuisine" ref={register}/></label>
-            <button>Add</button>
+            <Button>Add</Button>
             </form>
-        </div>
+        </Container>
     </>)
 
 };

@@ -8,7 +8,7 @@ import { Login, Container, Button, Body} from "../styles/LoginRegisterStyles"
 
 import "./Forms.css";
 
-// import loginImg from "../../login.jpg";
+
 
 export default function SignUpForm(props) {
   const { register, handleSubmit, errors } = useForm();
@@ -32,7 +32,7 @@ export default function SignUpForm(props) {
   return (
 
     <div className='base-container'>
-      {/* <img src ={loginImg} alt="construction"/> */}
+     
 
       <Container>
         <Login>Sign Up</Login>
@@ -73,7 +73,7 @@ export default function SignUpForm(props) {
               </div>
               {/* End of UserName Field */}
 
-              {/* End of Full Name Field*/}
+           
 
               <label htmlFor='password'>
                 Password{" "}
