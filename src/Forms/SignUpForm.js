@@ -9,19 +9,17 @@ import "./Forms.css";
 
 
 
-export default function SignUpForm() {
+export default function SignUpForm(props) {
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = data => {
     // console.log(data);
     axiosWithAuth()
-   .post("https://reqres.in/api/users/", data)
+   .post("https://lambda-food-truck.herokuapp.com/api/auth/register", data)
   
-  //  https://lambda-food-truck.herokuapp.com/api/auth/register
-  // "https://reqres.in/api/users/"
-
    .then(res => {
      console.log("success", res);
-    //  alert("Sign up successful")
+     localStorage.setItem('token', res.data.token);
+    props.history.push('/trucks');
     
    })
    .catch(err =>
@@ -35,7 +33,7 @@ export default function SignUpForm() {
 
     <Container>
           <Login>Sign Up</Login>
-          {/* <img src ={loginImg} alt="construction"/> */}
+        
           
     
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -64,29 +62,12 @@ export default function SignUpForm() {
 </div>
         {/* End of UserName Field */}
 
-        {/* Start of Full Name Field */}
-      <label htmlFor="FullName"> Name
-        <span> Already a user? 
-          <Link tag={Link} to="/login">Sign In</Link> 
-        </span>
-            <input
-                type='text'
-                placeholder='Name'
-                name='FullName'
-                ref={register({ required: true, minLength: 3})}
-            />
-      
-        {errors.FullName && errors.FullName.type === "required" && (
-          <span>Please enter your name</span>
-        )}
-        {errors.FullName && errors.FullName.type === "minLength" && (
-          <span>Name is too short</span>
-        )}
-      </label>
-                  {/* End of Full Name Field*/}
+        
 
       <label htmlFor="password">
-        Password
+        Password <span> Already a user? 
+          <Link tag={Link} to="/login">Sign In</Link> 
+        </span>
         </label>
         <input type="password" 
         placeholder="Password"
