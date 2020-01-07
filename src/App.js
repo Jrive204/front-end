@@ -11,11 +11,12 @@ import Home from "./Home";
 import TruckWall from "./components/TruckWall";
 import { GlobalStyle } from "./styles/GlobalStyles";
 import TruckCard from "./components/TruckCard";
+import PrivateRoute from "./util/PrivateRoute"
 
 
 
 function App(props) {
-  console.log(props)
+  
   return (
 
     <div className='App'>
@@ -24,18 +25,14 @@ function App(props) {
       <Header />
       <Switch>
         {/* Will use /:id instead of 'card' */}
-        <Route path='/trucks/card/review'>
-          <TruckReview />
-        </Route>
-        <Route path='/trucks/card'>
-          <TruckCard />
-        </Route>
-        <Route path='/trucks'>
-          <TruckWall />
-        </Route>
+
+        <PrivateRoute path='/trucks/card/review' component={TruckReview} />
+        <PrivateRoute path='/trucks/card' component={TruckCard} />
+        <PrivateRoute path='/trucks' component={TruckWall} />
         <Route exact path="/" component={LoginForm}/>
-        <Route path="/login" component={LoginForm}/>
-        <Route path="/signup" component={SignUpForm}/>
+        {/* <Route exact path="/login" component={CombinedLoginForm}/> */}
+        <Route exact path="/signup" component={SignUpForm}/>
+
         
       </Switch>
       </Router>
@@ -46,8 +43,8 @@ function App(props) {
 
 const mapStateToProps = (state) => {
     return {
-      users: state.users
-
+      users: state.users,
+      trucks: state.trucks
     };
 };
 

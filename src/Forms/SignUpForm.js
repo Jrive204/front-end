@@ -1,6 +1,7 @@
 import React from "react";
 import {useForm} from "react-hook-form";
 import {axiosWithAuth}  from "../util/axiosWithAuth"
+
 import { Link } from 'react-router-dom'
 import { Login, Container, Button} from "../styles/LoginRegisterStyles"
 import "./Forms.css";
@@ -12,14 +13,16 @@ import "./Forms.css";
 export default function SignUpForm(props) {
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = data => {
-    // console.log(data);
+    console.log(data);
     axiosWithAuth()
    .post("https://lambda-food-truck.herokuapp.com/api/auth/register", data)
   
    .then(res => {
      console.log("success", res);
+
      localStorage.setItem('token', res.data.token);
-    props.history.push('/trucks');
+      props.history.push('/trucks');
+
     
    })
    .catch(err =>
@@ -62,7 +65,14 @@ export default function SignUpForm(props) {
 </div>
         {/* End of UserName Field */}
 
+
         
+        <span> Already a user? 
+          <Link tag={Link} to="/login">Sign In</Link> 
+        </span>
+            
+                  {/* End of Full Name Field*/}
+
 
       <label htmlFor="password">
         Password <span> Already a user? 
@@ -92,8 +102,8 @@ export default function SignUpForm(props) {
           {errors.role && errors.role.type === "required" && (
           <span>Role is required</span>
         )}  
-          <option value="1">Diner</option>
-          <option value="2">Operator</option>
+          <option value="2">Diner</option>
+          <option value="1">Operator</option>
           </select>
         </label>
         
