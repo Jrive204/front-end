@@ -2,8 +2,10 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { axiosWithAuth } from "../util/axiosWithAuth";
 
-import { Link } from "react-router-dom";
-import { Login, Container, Button } from "../styles/LoginRegisterStyles";
+
+import { Link } from 'react-router-dom'
+import { Login, Container, Button, Body} from "../styles/LoginRegisterStyles"
+
 import "./Forms.css";
 
 // import loginImg from "../../login.jpg";
@@ -25,6 +27,7 @@ export default function SignUpForm(props) {
   };
 
   return (
+
     <div className='base-container'>
       <div className='header'>Sign Up</div>
       {/* <img src ={loginImg} alt="construction"/> */}
@@ -69,7 +72,7 @@ export default function SignUpForm(props) {
                 Password{" "}
                 <span>
                   Already a user?
-                  <Link tag={Link} to='/login'>
+                  <Link tag={Link} to='/'>
                     Sign In
                   </Link>
                 </span>

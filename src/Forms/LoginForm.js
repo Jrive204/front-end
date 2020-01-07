@@ -3,7 +3,7 @@ import { useForm} from "react-hook-form";
 import "./Forms.css";
 import {axiosWithAuth}  from "../util/axiosWithAuth"
 import { Link } from 'react-router-dom'
-import { Login, Container, Button} from "../styles/LoginRegisterStyles"
+import { Login, Container, Button, Body} from "../styles/LoginRegisterStyles"
 
 
 export default function LoginForm(props) {
@@ -29,8 +29,12 @@ export default function LoginForm(props) {
   return (
 
     <Container>
-          <Login>Login
+          <Login>
+            Login
           </Login>
+          <Body>
+            Enter your username and password. Your privacy is important to us and will not be shared.
+          </Body>
       <form onSubmit={handleSubmit(onSubmit)}>
     <div className="form">
     <div className="form-group">
@@ -57,8 +61,12 @@ export default function LoginForm(props) {
       
         {/* Start of Password Field */}
         <label htmlFor="password">
-        <span> No Account? <Link tag={Link} to="/signup">Sign Up</Link> </span>
-        Password
+        <span> No Account? 
+            <Link tag={Link} to="/signup">
+              Sign Up
+            </Link> 
+        </span>
+              Password
        
         </label>
         <input type="password" 
@@ -74,20 +82,6 @@ export default function LoginForm(props) {
           <span>Password is too short - 5 characters</span>
         )}
         {/* End of password field  */}
-
-        {/* <label htmlFor="role">
-            Select your role
-          <select name="role"
-          className="select"
-         ref={register({required: true})}
-         >
-          {errors.role && errors.role.type === "required" && (
-          <span>Role is required</span>
-        )}  
-          <option value="1">Diner</option>
-          <option value="2">Operator</option>
-          </select>
-        </label> */}
         
       </div>
       
