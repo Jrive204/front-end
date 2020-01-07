@@ -68,21 +68,9 @@ export default function SignUpForm() {
         {/* Start of Full Name Field */}
       <label htmlFor="FullName"> Name
         <span> Already a user? 
-          <Link tag={Link} to="/login">Sign In</Link> 
+          <Link tag={Link} to="/">Sign In</Link> 
         </span>
-            {/* <input
-                type='text'
-                placeholder='Name'
-                name='FullName'
-                ref={register({ required: true, minLength: 3})}
-            />
-      
-        {errors.FullName && errors.FullName.type === "required" && (
-          <span>Please enter your name</span>
-        )}
-        {errors.FullName && errors.FullName.type === "minLength" && (
-          <span>Name is too short</span>
-        )} */}
+            
       </label>
                   {/* End of Full Name Field*/}
 

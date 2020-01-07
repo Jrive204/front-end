@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import {axiosWithAuth} from '../util/axiosWithAuth';
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
@@ -18,6 +19,19 @@ const TruckWall = () => {
   const MAX_LENGTH = 250;
 
   console.log(trucks.length);
+
+  useEffect(() => {
+    axiosWithAuth()
+    .get('https://lambda-food-truck.herokuapp.com/api/trucks')
+    .then(resp => {
+      console.log(resp);
+    })
+    .catch(err => console.log(err));
+
+
+
+  },[]);
+
 
   return (
     <>
