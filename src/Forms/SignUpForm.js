@@ -68,7 +68,6 @@ export default function SignUpForm(props) {
               <label htmlFor='password'>
                 Password{" "}
                 <span>
-                  {" "}
                   Already a user?
                   <Link tag={Link} to='/login'>
                     Sign In

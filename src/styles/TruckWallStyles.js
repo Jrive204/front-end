@@ -7,7 +7,7 @@ import Rating from "@material-ui/lab/Rating";
 export const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    marginTop: "3%"
+    marginTop: "1%"
   },
   paper: {
     padding: theme.spacing(2),

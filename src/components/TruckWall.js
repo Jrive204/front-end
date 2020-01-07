@@ -7,49 +7,50 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import { Link } from "react-router-dom";
 import { useStyles, StyledFav, StyledRatings } from "../styles/TruckWallStyles";
 import Rating from "@material-ui/lab/Rating";
-import axios from "axios";
 import { axiosWithAuth } from "../util/axiosWithAuth";
 
 import data from "../data.test";
+import SearchBar from "./SearchBar";
 
 const TruckWall = () => {
   const classes = useStyles();
-  const [trucks] = useState(data);
+  const [trucklist, setTruckList] = useState([]);
   const [favorite, setFavorite] = useState([]);
   const [searchName, setSearchName] = useState(``);
 
   const MAX_LENGTH = 250;
 
-  console.log(trucks.length);
+  // console.log(trucks.length);
   useEffect(() => {
     axiosWithAuth()
       .get(`https://lambda-food-truck.herokuapp.com/api/trucks `)
       .then(response => {
-        console.log(response, "data");
-        // let people = response.data.results.filter(character =>
-        //   character.name.toLowerCase().includes(searchName.toLowerCase().trim())
-        // );
-        // console.log(people, `YOOO`);
-        // setCharlist(people);
+        console.log(response.data, "data");
+        let trucks = response.data.filter(truck =>
+          truck.cuisine.toLowerCase().includes(searchName.toLowerCase().trim())
+        );
+        console.log(trucks, `YOOO`);
+        setTruckList(trucks);
       });
-  }, []);
+  }, [searchName]);
 
   return (
     <>
-      {trucks.map((truck, index) => (
+      <SearchBar setSearchName={setSearchName}></SearchBar>
+      {trucklist.map((truck, index) => (
         <div key={truck.id} className={classes.root}>
           <Paper elevation={10} className={classes.paper}>
             <Grid container spacing={2}>
               <Grid item>
-                <ButtonBase className={classes.image}>
-                  <Link to='/trucks/card'>
+                <Link to='/trucks/card'>
+                  <ButtonBase className={classes.image}>
                     <img
                       className={classes.img}
                       alt='Truck'
                       src={truck.imageUrl}
                     />
-                  </Link>
-                </ButtonBase>
+                  </ButtonBase>
+                </Link>
               </Grid>
               <Grid item xs={12} sm container className={classes.grid}>
                 <Grid item xs container direction='column' spacing={2}>
@@ -72,13 +73,13 @@ const TruckWall = () => {
                         className={classes.stars}
                         name='half-rating'
                         // trucks.length will = reviews.length
-                        value={truck.stars / trucks.length}
+                        value={truck.stars / trucklist.length}
                         precision={0.5}
                         readOnly>
-                        {console.log(trucks.length, "reviews")}
+                        {console.log(trucklist.length, "reviews")}
                       </Rating>
                       <span style={{ marginLeft: "2%" }}>
-                        {trucks.length} reviews
+                        {trucklist.length} reviews
                       </span>
                     </StyledRatings>
                     <span style={{ fontSize: "1rem" }}>
@@ -89,7 +90,8 @@ const TruckWall = () => {
                       component='div'
                       className={classes.grid}
                       paragraph>
-                      {truck.description.length > MAX_LENGTH ? (
+                      {!truck.description === null &&
+                      truck.description.length > MAX_LENGTH ? (
                         <p>
                           {`${truck.description.substring(0, MAX_LENGTH)}...`}
                           <Link to='/trucks/card'>Read more</Link>
@@ -109,13 +111,6 @@ const TruckWall = () => {
                       max={1}
                       icon={<FavoriteIcon fontSize='inherit' />}
                     />
-
-                    <Typography
-                      align='right'
-                      variant='body2'
-                      style={{ cursor: "pointer" }}>
-                      Remove
-                    </Typography>
                   </Grid>
                 </Grid>
                 <Grid style={{ width: "25%" }}>
