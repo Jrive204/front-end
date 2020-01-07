@@ -25,12 +25,14 @@ function App(props) {
       <Header />
       <Switch>
         {/* Will use /:id instead of 'card' */}
+
         <PrivateRoute path='/trucks/card/review' component={TruckReview} />
         <PrivateRoute path='/trucks/card' component={TruckCard} />
         <PrivateRoute path='/trucks' component={TruckWall} />
         <Route exact path="/" component={LoginForm}/>
         {/* <Route exact path="/login" component={CombinedLoginForm}/> */}
         <Route exact path="/signup" component={SignUpForm}/>
+
         
       </Switch>
       </Router>
