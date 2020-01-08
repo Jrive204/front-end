@@ -24,18 +24,6 @@ export default function LoginForm(props) {
    );
   };                                       
 
-
-      .then(res => {
-        console.log("success", res);
-        localStorage.setItem("token", res.data.token);
-        props.history.push("/trucks");
-      })
-      .catch(err => {
-        alert((err.message = "Invalid Username or Password"));
-        console.log(err.response);
-      });
-  };
-
   return (
     <Container>
       <Login>Login</Login>
