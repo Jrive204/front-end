@@ -1,12 +1,29 @@
 import styled from "styled-components";
 
 export const HeaderStylesDiv = styled.div`
+text-align: center;
   width: 100%;
-  height: 60px;
+  height: 50px;
   left: 0px;
-  top: 0px;
-  padding: 10px 0;
-  background: #131212;
+  top: 10px;
+  padding: 15px 0;
+  background: #5A4E4E;
+`;
+
+export const StyledpTrackR = styled.h1`
+position: absolute;
+left: 26.81%;
+right: 26.57%;
+top: 2.03%;
+bottom: 94.04%;
+
+color: #FFB90F;
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 0px;
+
 `;
 
 export const Logodiv = styled.div`
@@ -18,33 +35,51 @@ export const Logodiv = styled.div`
   border-radius: 50%;
   color: white;
   background: #6a6767;
+  
 `;
 
 export const StyledpFood = styled.p`
-  position: absolute;
-  width: 39px;
-  height: 15px;
-  left: 13px;
-  top: 26px;
-  font-family: Risque;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 1.45rem;
-  line-height: 21px;
-  display: flex;
-  align-items: center;
-  color: #000000;
+color: #FFB90F;
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 48px;
+line-height: 0px;
+
+
+
+/* identical to box height */
+
+// display: flex;
+// align-items: center;
+// text-align: center;
+
+  // position: absolute;
+  // width: 39px;
+  // height: 15px;
+  // left: 13px;
+  // top: 26px;
+  // font-family: Risque;
+  // font-style: normal;
+  // font-weight: 500;
+  // font-size: 1.45rem;
+  // line-height: 21px;
+  // display: flex;
+  // align-items: center;
+  // color: #000000;
+
+
+
 `;
 
 export const StyledpTruck = styled(StyledpFood)`
   top: 45px;
   left: 18px;
+ 
+  
 `;
 
-export const StyledpTrackR = styled(StyledpFood)`
-  left: 23px;
-  top: 65px;
-`;
+
 
 export const StyledImgLogo = styled.img`
   position: absolute;

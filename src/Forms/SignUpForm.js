@@ -7,7 +7,7 @@ import { Login, Container, Button } from "../styles/LoginRegisterStyles";
 
 import "./Forms.css";
 
-// import loginImg from "../../login.jpg";
+
 
 export default function SignUpForm(props) {
   const { register, handleSubmit, errors } = useForm();
@@ -20,17 +20,25 @@ export default function SignUpForm(props) {
         console.log("success", res);
 
         localStorage.setItem("token", res.data.token);
-        props.history.push("/trucks");
+        props.history.push("/home");
       })
-      .catch(err => console.log(err.response));
+      .catch(err => 
+        alert(err.response.data.username));
+  
+
   };
 
   return (
     <div className='base-container'>
+
       {/* <img src ={loginImg} alt="construction"/> */}
+
 
       <Container>
         <Login>Sign Up</Login>
+          <Body>
+            Enter a username and password to create your account. Your privacy is important to us and will not be shared.
+          </Body>
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className='form'>
@@ -60,10 +68,12 @@ export default function SignUpForm(props) {
                 {errors.username && errors.username.type === "maxLength" && (
                   <span>Username is too long</span>
                 )}
+              
+                
               </div>
               {/* End of UserName Field */}
 
-              {/* End of Full Name Field*/}
+           
 
               <label htmlFor='password'>
                 Password{" "}

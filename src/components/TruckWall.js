@@ -93,6 +93,19 @@ const TruckWall = () => {
       });
   }, [searchName]);
 
+  useEffect(() => {
+    axiosWithAuth()
+    .get('https://lambda-food-truck.herokuapp.com/api/trucks')
+    .then(resp => {
+      console.log(resp);
+    })
+    .catch(err => console.log(err));
+
+
+
+  },[]);
+
+
   return (
     <>
       <div

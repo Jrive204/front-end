@@ -9,9 +9,21 @@ export default function LoginForm(props) {
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = data => {
-    console.log(data);
-    axiosWithAuth()
-      .post("https://lambda-food-truck.herokuapp.com/api/auth/login", data)
+
+   console.log(data)
+   axiosWithAuth()
+   .post("https://lambda-food-truck.herokuapp.com/api/auth/login", data) 
+  
+  .then(res => {
+     console.log("success", res);
+     localStorage.setItem('token', res.data.token);
+     props.history.push('/home');
+   })
+   .catch(err =>
+     console.log(err.response)
+   );
+  };                                       
+
 
       .then(res => {
         console.log("success", res);
