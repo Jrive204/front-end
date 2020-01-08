@@ -1,18 +1,43 @@
 import styled from "styled-components";
+import { makeStyles } from "@material-ui/core/styles";
 
-export const Inputtextarea = styled.textarea`
-  display: flex;
-  line-height: 1.44em;
-  border: 0;
-  outline: none;
-  padding: 0;
-  resize: none;
+export const useStyles = makeStyles(theme => ({
+  root: {
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+    overflow: "hidden",
+    backgroundColor: theme.palette.background.paper
+  },
+  gridList: {}
+}));
+
+export const StyledTruckCardDiv = styled.div`
+  margin: 0 auto;
+  margin-top: 2%;
+  max-width: 800px;
+`;
+
+export const StyledTruckCardimgdiv = styled.div`
   width: 100%;
-  height: 25vh;
-  font-size: 1.8rem;
+  margin-bottom: 1%;
+`;
 
-  ::placeholder {
-    font-size: 1rem;
-    color: gray;
+export const StyledTruckCardimg = styled.img`
+  width: 100%;
+`;
+
+export const StyledTruckCardTitleDiv = styled.div`
+  h1 {
+    margin-bottom: 0;
+  }
+  display: flex;
+  margin-bottom: 10px;
+  flex-direction: column;
+`;
+
+export const StyledTruckCardReviewdiv = styled.div`
+  p {
+    font-size: 1.1rem;
   }
 `;

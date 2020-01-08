@@ -1,13 +1,15 @@
-
 import { useState, useRef } from "react";
-
+import { axiosWithAuth } from "../../util/axiosWithAuth";
 
 export function useFormState(initial, props) {
   const [user, setUser] = useState(initial);
   const [value, setValue] = useState(0);
 
+  // console.log(props, `props`);
+  // console.log(props.match.params.id, `params`);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  
   const timer = useRef();
 
 
@@ -18,7 +20,6 @@ export function useFormState(initial, props) {
   function handlestarchange(event, newValue) {
     setValue(newValue);
 
-
     setUser({ ...user, [event.target.name]: event.target.value });
   }
 
@@ -28,6 +29,21 @@ export function useFormState(initial, props) {
     else if (!user.review) return alert(`Missing Review`);
     else if (!user.stars) return alert(`Rating Required`);
     //   props.addNewteam(user);
+
+    axiosWithAuth()
+      .post(
+        ` https://lambda-food-truck.herokuapp.com/api/trucks/${props.match.params.id}/review`,
+        {
+          title: user.title,
+          rating: user.stars,
+          review: user.review
+        }
+      )
+
+      .then(res => {
+        console.log("success", res);
+      })
+      .catch(err => console.log(err.response));
 
     if (!loading) {
       setSuccess(false);
@@ -41,7 +57,6 @@ export function useFormState(initial, props) {
       }, 2000);
     }
   };
-
 
   function handlesubmit(e) {
     e.preventDefault();
@@ -66,4 +81,3 @@ export function useFormState(initial, props) {
     value
   ];
 }
-
