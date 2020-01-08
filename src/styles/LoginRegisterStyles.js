@@ -49,7 +49,7 @@ margin-top: 3rem;
   `
   export const Body = styled.p `
   
-width: 20%;
+width: 30%;
 
 
     /* Body 2 / Roboto Regular */

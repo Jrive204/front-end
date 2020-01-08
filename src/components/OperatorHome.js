@@ -4,6 +4,14 @@ import {axiosWithAuth} from '../util/axiosWithAuth';
 import {getUsers,deleteTrucks} from '../actions';
 import {Link} from 'react-router-dom';
 
+import {Hellodiner, 
+        Diner, 
+        Favtrucks, 
+        Cuisine, 
+        Button, 
+        Operator,
+        HelloOperator} from "../styles/DinerHome"
+
 const OperatorHome = (props) => {
 
 
@@ -33,15 +41,15 @@ const OperatorHome = (props) => {
     };
     return(<>
         {props.users.role === 1 &&
-            <div className="operator">
-                <p>Hello {props.users.username}</p>
+            <Operator>
+                <HelloOperator>Hello {props.users.username}</HelloOperator>
                 <Link to={'/addtruck'}>Create New Truck</Link>
                 <div>
                     <h2>Your Trucks</h2>
                     {props.users.trucks.map(truck =>
                         <div key={truck.id}>
                         <h3>{truck.name}</h3>
-                        <p>Cuisine: {truck.cuisine}</p>
+                        <Cuisine>Cuisine: {truck.cuisine}</Cuisine>
                         <br />
                         <button onClick={(e) => deleteTruck(e, truck.id)}>delete</button>
                         <Link to={{pathname:`/home/trucks/${truck.id}`, state: { truck: truck}}}>Edit Truck</Link>
@@ -49,12 +57,24 @@ const OperatorHome = (props) => {
                     )}
                 </div>
 
-            </div>        
+            </Operator>        
         }
         {props.users.role === 2 && 
-            <div className="Diner">
-                <p>Hello Diner</p>
-            </div>
+            <Diner>
+    
+                <Hellodiner>Hello {props.users.username}</Hellodiner>
+                <Favtrucks> Favorite Trucks</Favtrucks>
+                {props.users.trucks.map(truck =>
+                        <div key={truck.id}>
+                        <h3>{truck.name}</h3>
+                        <Cuisine>Cuisine: {truck.cuisine}</Cuisine>
+                        <br />
+                        <Button onClick={(e) => deleteTruck(e, truck.id)}>delete</Button>
+                        </div>
+                    )}
+                
+
+            </Diner>
         
         }
         

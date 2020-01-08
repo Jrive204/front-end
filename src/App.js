@@ -37,7 +37,6 @@ function App(props) {
         <PrivateRoute path='/trucks' component={TruckWall} />
         <PrivateRoute path='/home' component={OperatorHome} />
         <Route exact path="/" component={LoginForm}/>
-        {/* <Route exact path="/login" component={CombinedLoginForm}/> */}
         <Route exact path="/signup" component={SignUpForm}/>
 
         
