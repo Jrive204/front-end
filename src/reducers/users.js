@@ -35,7 +35,11 @@ const userReducer = (state = initialState, action) => {
             return {
                 ...state,
                 trucks: [...state.trucks.forEach(item => {
-
+                    if (item.id === action.payload.id) {
+                        item.name = action.payload.data.name;
+                        item.imageUrL = action.payload.data.imageUrL;
+                        item.cuisine = action.payload.data.cuisine;
+                    } 
                 })]
             };
         default:

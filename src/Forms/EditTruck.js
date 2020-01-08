@@ -8,7 +8,12 @@ const EditTruck = (props) => {
     const {handleSubmit, register, errors} = useForm();
     console.log(props);
     const onSubmit = values => {
-        props.editTrucks(values, props.match.params.id);
+        let data = {
+            name: values.name ? values.name : props.location.state.truck.name,
+            imageUrl: values.imageUrl ? values.imageUrl : props.location.state.truck.imageUrl,
+            cuisine: values.cuisine ? values.cuisine : props.location.state.truck.cuisine
+        }
+        props.editTrucks(data, props.match.params.id);
     };
     return(<>
         <div className="editTruck">
@@ -17,7 +22,7 @@ const EditTruck = (props) => {
                 <label>Name: 
                     <input name="name" placeholder={props.location.state.truck.name} ref={register} /></label>
                 <label>Image: 
-                    <input name="imageUrl" placeholder={props.location.state.truck.imageURL} ref={register} /></label>
+                    <input name="imageUrl" placeholder={props.location.state.truck.imageUrl} ref={register} /></label>
                 <label>Name: 
                     <input name="cuisine"  placeholder={props.location.state.truck.cuisine} ref={register} /></label>
                 <button>Edit</button>
