@@ -30,6 +30,8 @@ const AddTruck = (props) => {
                 <input name="imageUrl" ref={register}/></label>
             <label>Cuisine: 
                 <input name="cuisine" ref={register}/></label>
+            <label>Description: 
+                <textarea name="description" ref={register}/></label>
             <Button>Add</Button>
             </form>
         </Container>

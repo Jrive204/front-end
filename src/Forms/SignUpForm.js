@@ -4,7 +4,7 @@ import { axiosWithAuth } from "../util/axiosWithAuth";
 
 import { Link } from "react-router-dom";
 import { Login, Container, Button } from "../styles/LoginRegisterStyles";
-
+import {Body} from '../styles/LoginRegisterStyles';
 import "./Forms.css";
 
 
