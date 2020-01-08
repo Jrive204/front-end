@@ -25,6 +25,7 @@ const TruckReview = props => {
   const classes = useStyles();
   const [hover, setHover] = useState(0);
   const { push } = useHistory();
+
   const [
     user,
     handlechange,
@@ -63,8 +64,7 @@ const TruckReview = props => {
   return (
     <StyledTruckReviewDiv>
       <StyledTruckReviewFormDiv>
-        <h1>&nbsp; Map Truck Title {console.log(props, `propsagain`)}</h1>
-
+        <h1>&nbsp; Map Truck Title </h1>
         <form id='ReviewForm' onSubmit={handleButtonClick}>
           <fieldset style={{ border: `0` }} className='formfield'>
             <label className='forms'>
@@ -136,9 +136,13 @@ const TruckReview = props => {
                   {success ? <CheckIcon /> : <Publish />}
                   {/* Will Pushing Back to Truck Wall */}
                   {success
-                    ? setTimeout(() => {
-                        push(`/trucks/${props.match.params}`);
-                      }, 1500)
+                    ? setTimeout(
+                        (push({
+                          pathname: `/trucks/${props.match.params.id}`,
+                          state: { value: props.location.state.value }
+                        }),
+                        1000)
+                      )
                     : null}
                 </StyledFab>
                 {loading && (

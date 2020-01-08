@@ -17,6 +17,7 @@ const TruckWall = () => {
   const [favorite, setFavorite] = useState([]);
   const [searchName, setSearchName] = useState(``);
   const [searchfilter, setSearchFilter] = useState([]);
+  let ValContext = e => (0 ? e.target.value + 1 : null);
 
   const MAX_LENGTH = 250;
 
@@ -121,6 +122,7 @@ const TruckWall = () => {
                     />
                   </ButtonBase>
                 </Link>
+                {console.log(truck.imageUrl, `img`)}
               </Grid>
               <Grid item xs={12} sm container className={classes.grid}>
                 <Grid item xs container direction='column' spacing={2}>
@@ -186,9 +188,7 @@ const TruckWall = () => {
                     <StyledFav
                       name='Favorite'
                       value={0}
-                      onChange={event => {
-                        console.log("Hello once");
-                      }}
+                      onChange={e => ValContext(e)}
                       max={1}
                       icon={<FavoriteIcon fontSize='inherit' />}
                     />
