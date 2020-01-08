@@ -15,6 +15,7 @@ import TruckCard from "./components/TruckCard";
 import PrivateRoute from "./util/PrivateRoute";
 import OperatorHome from './components/OperatorHome';
 import AddTruck from './Forms/AddTruck';
+import EditTruck from './Forms/EditTruck';
 
 
 
@@ -29,7 +30,7 @@ function App(props) {
       <Header />
       <Switch>
         {/* Will use /:id instead of 'card' */}
-
+        <PrivateRoute path='/home/trucks/:id' component={EditTruck} />
         <PrivateRoute path='/trucks/card/review' component={TruckReview} />
         <PrivateRoute path='/addtruck' component={AddTruck}/>
         <PrivateRoute path='/trucks/card' component={TruckCard} />
