@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useRouteMatch } from "react-router-dom";
 import {
   StyledTruckCardDiv,
   StyledTruckCardimgdiv,
   StyledTruckCardimg,
   StyledTruckCardTitleDiv,
+  StyledTruckCardReviewdiv,
   useStyles
 } from "../styles/TruckCardStyles";
 import Rating from "@material-ui/lab/Rating";
@@ -12,12 +13,30 @@ import EditIcon from "@material-ui/icons/Edit";
 import data from "../data.test";
 
 import { Button, GridList, GridListTile } from "@material-ui/core";
+import { axiosWithAuth } from "../util/axiosWithAuth";
 
 const TruckCard = props => {
   const { url } = useRouteMatch();
+  const classes = useStyles();
+  const [reviews, setReviews] = useState([]);
+
   console.log(props, `props!!`);
   console.log(data, "data");
-  const classes = useStyles();
+
+  console.log(props.location.pathname, "hi");
+
+  useEffect(() => {
+    axiosWithAuth()
+      .get(
+        `https://lambda-food-truck.herokuapp.com/api${props.location.pathname}`
+      )
+      .then(response => {
+        console.log(response);
+        setReviews(response.data.reviews);
+      });
+  }, []);
+
+  console.log(reviews, "thereviews");
 
   const truck = props.location.state.value;
 
@@ -79,6 +98,22 @@ const TruckCard = props => {
           {truck.description}Simple mom-&-pop-style Chinese eatery serving
           basics from fried rice to egg rolls.
         </p>
+      </div>
+      <div>
+        <h2>Reviews</h2>
+        {reviews.map(review => (
+          <StyledTruckCardReviewdiv key={review.id}>
+            <Rating
+              name='half-rating'
+              // trucks.length will = reviews.length
+              value={review.rating}
+              precision={0.5}
+              readOnly></Rating>
+            <h3>{review.title}</h3>
+            <h4>{review.username}</h4>
+            <p>{review.review}</p>
+          </StyledTruckCardReviewdiv>
+        ))}
       </div>
     </StyledTruckCardDiv>
   );

@@ -35,3 +35,9 @@ export const StyledTruckCardTitleDiv = styled.div`
   margin-bottom: 10px;
   flex-direction: column;
 `;
+
+export const StyledTruckCardReviewdiv = styled.div`
+  p {
+    font-size: 1.1rem;
+  }
+`;
