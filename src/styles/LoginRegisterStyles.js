@@ -13,7 +13,7 @@ mix-blend-mode: normal;
 `
   
   export const Container = styled.div `
-margin-top: 3rem;
+
 
 
     display: flex;
