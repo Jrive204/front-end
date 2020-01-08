@@ -136,9 +136,13 @@ const TruckReview = props => {
                   {success ? <CheckIcon /> : <Publish />}
                   {/* Will Pushing Back to Truck Wall */}
                   {success
-                    ? setTimeout(() => {
-                        push("/trucks/card");
-                      }, 1500)
+                    ? setTimeout(
+                        (push({
+                          pathname: `/trucks/${props.match.params.id}`,
+                          state: { value: props.location.state.value }
+                        }),
+                        1000)
+                      )
                     : null}
                 </StyledFab>
                 {loading && (

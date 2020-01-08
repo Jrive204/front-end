@@ -9,7 +9,6 @@ import { useStyles, StyledFav, StyledRatings } from "../styles/TruckWallStyles";
 import Rating from "@material-ui/lab/Rating";
 import { axiosWithAuth } from "../util/axiosWithAuth";
 
-import data from "../data.test";
 import SearchBar from "./SearchBar";
 
 const TruckWall = () => {
@@ -18,6 +17,7 @@ const TruckWall = () => {
   const [favorite, setFavorite] = useState([]);
   const [searchName, setSearchName] = useState(``);
   const [searchfilter, setSearchFilter] = useState([]);
+  let ValContext = e => (0 ? e.target.value + 1 : null);
 
   const MAX_LENGTH = 250;
 
@@ -122,7 +122,11 @@ const TruckWall = () => {
           <Paper elevation={10} className={classes.paper}>
             <Grid container spacing={2}>
               <Grid item>
-                <Link to='/trucks/card'>
+                <Link
+                  to={{
+                    pathname: `/trucks/${truck.id}`,
+                    state: { value: truck }
+                  }}>
                   <ButtonBase className={classes.image}>
                     <img
                       className={classes.img}
@@ -131,11 +135,17 @@ const TruckWall = () => {
                     />
                   </ButtonBase>
                 </Link>
+                {console.log(truck.imageUrl, `img`)}
               </Grid>
               <Grid item xs={12} sm container className={classes.grid}>
                 <Grid item xs container direction='column' spacing={2}>
                   <Grid item xs>
-                    <Link style={{ textDecoration: "none" }} to='/trucks/card'>
+                    <Link
+                      style={{ textDecoration: "none" }}
+                      to={{
+                        pathname: `/trucks/${truck.id}`,
+                        state: { value: truck }
+                      }}>
                       <Typography
                         style={{
                           fontSize: "1.6rem",
@@ -174,7 +184,13 @@ const TruckWall = () => {
                       truck.description.length > MAX_LENGTH ? (
                         <p>
                           {`${truck.description.substring(0, MAX_LENGTH)}...`}
-                          <Link to='/trucks/card'>Read more</Link>
+                          <Link
+                            to={{
+                              pathname: `/trucks/${truck.id}`,
+                              state: { value: truck }
+                            }}>
+                            Read more
+                          </Link>
                         </p>
                       ) : (
                         <>{truck.description} description</>
@@ -185,9 +201,7 @@ const TruckWall = () => {
                     <StyledFav
                       name='Favorite'
                       value={0}
-                      onChange={event => {
-                        console.log("Hello once");
-                      }}
+                      onChange={e => ValContext(e)}
                       max={1}
                       icon={<FavoriteIcon fontSize='inherit' />}
                     />

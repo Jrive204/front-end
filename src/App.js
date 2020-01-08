@@ -1,14 +1,12 @@
-
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
 import LoginForm from "./Forms/LoginForm";
-import SignUpForm from "./Forms/SignUpForm"
+import SignUpForm from "./Forms/SignUpForm";
 import TruckReview from "./components/TruckReview";
 import Header from "./components/Header";
-import {connect} from "react-redux";
 
+import { connect } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./Home";
 import TruckWall from "./components/TruckWall";
 import { GlobalStyle } from "./styles/GlobalStyles";
 import TruckCard from "./components/TruckCard";
@@ -22,10 +20,11 @@ import EditTruck from './Forms/EditTruck';
 
 function App(props) {
 
-  return (
 
+  return (
     <div className='App'>
       <Router>
+
       <GlobalStyle />
       <Header />
       <Switch>
@@ -41,21 +40,17 @@ function App(props) {
 
         
       </Switch>
+
       </Router>
     </div>
   );
 }
 
-
-const mapStateToProps = (state) => {
-    return {
-      users: state.users,
-      trucks: state.trucks
-    };
+const mapStateToProps = state => {
+  return {
+    users: state.users,
+    trucks: state.trucks
+  };
 };
 
-export default connect(
-  mapStateToProps,
-  {}
-  )(App);
-
+export default connect(mapStateToProps, {})(App);
