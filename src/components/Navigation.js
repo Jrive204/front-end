@@ -11,9 +11,16 @@ import { Ul , Li, LiA, StyledLink} from "../styles/HeaderStyles"
              <>
            <Ul>
 
+            <Li>
+                <LiA>
+                <StyledLink as="a" href="https://bwfoodtrucktracker.github.io/marketing-ui/">Marketing Page</StyledLink>
+                </LiA>
+            </Li>
+
+
            <Li>
                 <LiA>
-                <StyledLink to="/home">Home/Login</StyledLink>
+                <StyledLink to="/home">Home</StyledLink>
                 </LiA>
             </Li>
 

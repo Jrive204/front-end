@@ -4,7 +4,7 @@ import LoginForm from "./Forms/LoginForm";
 import SignUpForm from "./Forms/SignUpForm";
 import TruckReview from "./components/TruckReview";
 import Header from "./components/Header";
-
+import Navigation from "./components/Navigation"
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import TruckWall from "./components/TruckWall";
@@ -24,6 +24,7 @@ function App(props) {
 
         <GlobalStyle />
         <Header />
+        <Navigation />
         <Switch>
           {/* Will use /:id instead of 'card' */}
           <PrivateRoute path='/home/trucks/:id' component={EditTruck} />
