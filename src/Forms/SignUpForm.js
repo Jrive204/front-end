@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { axiosWithAuth } from "../util/axiosWithAuth";
 
 import { Link } from "react-router-dom";
-import { Login, Container, Button } from "../styles/LoginRegisterStyles";
+import { Login, Container, Button, Body } from "../styles/LoginRegisterStyles";
 
 import "./Forms.css";
 

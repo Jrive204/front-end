@@ -18,6 +18,8 @@ import EditTruck from './Forms/EditTruck';
 
 
 
+
+
 function App(props) {
 
 
@@ -27,6 +29,7 @@ function App(props) {
 
       <GlobalStyle />
       <Header />
+     
       <Switch>
         {/* Will use /:id instead of 'card' */}
         <PrivateRoute path='/home/trucks/:id' component={EditTruck} />

@@ -12,6 +12,8 @@ import {Hellodiner,
         Operator,
         HelloOperator} from "../styles/DinerHome"
 
+      
+
 const OperatorHome = (props) => {
 
 
@@ -42,7 +44,10 @@ const OperatorHome = (props) => {
     return(<>
         {props.users.role === 1 &&
             <Operator>
+                
+               
                 <HelloOperator>Hello {props.users.username}</HelloOperator>
+                
                 <Link to={'/addtruck'}>Create New Truck</Link>
                 <div>
                     <h2>Your Trucks</h2>
@@ -61,7 +66,7 @@ const OperatorHome = (props) => {
         }
         {props.users.role === 2 && 
             <Diner>
-    
+                 
                 <Hellodiner>Hello {props.users.username}</Hellodiner>
                 <Favtrucks> Favorite Trucks</Favtrucks>
                 {props.users.trucks.map(truck =>
