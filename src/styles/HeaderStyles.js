@@ -1,7 +1,12 @@
 import styled from "styled-components";
+import {
+
+  Switch,
+  Route,
+  Link } from "react-router-dom";
 
 export const HeaderStylesDiv = styled.div`
-text-align: center;
+  text-align: center;
   width: 100%;
   height: 50px;
   left: 0px;
@@ -16,14 +21,14 @@ left: 26.81%;
 right: 26.57%;
 top: 2.03%;
 bottom: 94.04%;
-
-color: #FFB90F;
-font-family: Roboto;
+color: #E9BB41;
+font-family: 'Open Sans', sans-serif;
 font-style: normal;
-font-weight: normal;
-font-size: 24px;
+font-weight:normal;
+font-size: 45px;
 line-height: 0px;
-
+letter-spacing: 0.15px; 
+padding-bottom: -20rem;
 `;
 
 export const Logodiv = styled.div`
@@ -89,3 +94,32 @@ export const StyledImgLogo = styled.img`
 
 `;
 
+export const Ul = styled.ul `
+width: 100%;
+list-style-type: none;
+  margin: 0;
+  padding: 50;
+  overflow: hidden;
+  background-color: #5A4E4E;
+`
+
+export const Li = styled.li `
+float: left;
+
+`
+
+export const LiA= styled.a `
+display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+`
+
+export const StyledLink = styled(Link)`
+display: block;
+color: color: #E9BB41;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+`;

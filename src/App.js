@@ -15,10 +15,13 @@ import OperatorHome from "./components/OperatorHome";
 import AddTruck from "./Forms/AddTruck";
 import EditTruck from "./Forms/EditTruck";
 
+
+
 function App(props) {
   return (
     <div className='App'>
       <Router>
+
         <GlobalStyle />
         <Header />
         <Switch>
@@ -32,6 +35,7 @@ function App(props) {
           <Route exact path='/' component={LoginForm} />
           <Route exact path='/signup' component={SignUpForm} />
         </Switch>
+
       </Router>
     </div>
   );

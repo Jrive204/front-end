@@ -1,12 +1,14 @@
 import React from "react";
-import { useForm } from "react-hook-form";
+import { useForm} from "react-hook-form";
 import "./Forms.css";
-import { axiosWithAuth } from "../util/axiosWithAuth";
-import { Link } from "react-router-dom";
-import { Login, Container, Button, Body } from "../styles/LoginRegisterStyles";
+import {axiosWithAuth}  from "../util/axiosWithAuth"
+import { Link } from 'react-router-dom'
+import { Login, Container, Button, Body} from "../styles/LoginRegisterStyles"
+
 
 export default function LoginForm(props) {
   const { register, handleSubmit, errors } = useForm();
+
 
   const onSubmit = data => {
     console.log(data);
@@ -92,3 +94,4 @@ return (
   </Container>
 );
           }
+

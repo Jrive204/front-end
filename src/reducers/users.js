@@ -34,14 +34,22 @@ const userReducer = (state = initialState, action) => {
         case EDIT_TRUCK:
             return {
                 ...state,
-                trucks: [...state.trucks.forEach(item => {
-                    if (item.id === action.payload.id) {
-                        item.name = action.payload.data.name;
-                        item.imageUrL = action.payload.data.imageUrL;
-                        item.cuisine = action.payload.data.cuisine;
-                    } 
+                trucks: [...state.trucks.map(item => {
+                    console.log(item.id);
+                    if (item.id == action.payload.key) {
+                        return{...item,
+                            
+                            name: action.payload.data.name,
+                            imageUrl: action.payload.data.imageUrL,
+                            cuisine: action.payload.data.cuisine,
+                            description: action.payload.data.description,
+                            menu: action.payload.data.menu
+                        }
+                    }else {
+                        return item;
+                    }
                 })]
-            };
+            }
         default:
             return state;
     }

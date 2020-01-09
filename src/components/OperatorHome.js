@@ -12,6 +12,8 @@ import {Hellodiner,
         Operator,
         HelloOperator} from "../styles/DinerHome"
 
+      
+
 const OperatorHome = (props) => {
 
 
@@ -42,14 +44,19 @@ const OperatorHome = (props) => {
     return(<>
         {props.users.role === 1 &&
             <Operator>
+                
+               
                 <HelloOperator>Hello {props.users.username}</HelloOperator>
+                
                 <Link to={'/addtruck'}>Create New Truck</Link>
                 <div>
                     <h2>Your Trucks</h2>
                     {props.users.trucks.map(truck =>
                         <div key={truck.id}>
                         <h3>{truck.name}</h3>
+                        <img src={truck.imageUrl} alt='truck' style={{maxWidth: '150px'}}/>
                         <Cuisine>Cuisine: {truck.cuisine}</Cuisine>
+                        <p>{truck.description}</p>
                         <br />
                         <button onClick={(e) => deleteTruck(e, truck.id)}>delete</button>
                         <Link to={{pathname:`/home/trucks/${truck.id}`, state: { truck: truck}}}>Edit Truck</Link>
@@ -61,12 +68,13 @@ const OperatorHome = (props) => {
         }
         {props.users.role === 2 && 
             <Diner>
-    
+                 
                 <Hellodiner>Hello {props.users.username}</Hellodiner>
                 <Favtrucks> Favorite Trucks</Favtrucks>
                 {props.users.trucks.map(truck =>
                         <div key={truck.id}>
                         <h3>{truck.name}</h3>
+                        <img src={truck.imageUrl} alt='truck'/>
                         <Cuisine>Cuisine: {truck.cuisine}</Cuisine>
                         <br />
                         <Button onClick={(e) => deleteTruck(e, truck.id)}>delete</Button>
