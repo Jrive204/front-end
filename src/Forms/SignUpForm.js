@@ -3,11 +3,9 @@ import { useForm } from "react-hook-form";
 import { axiosWithAuth } from "../util/axiosWithAuth";
 
 import { Link } from "react-router-dom";
-import { Login, Container, Button } from "../styles/LoginRegisterStyles";
+import { Login, Container, Button, Body } from "../styles/LoginRegisterStyles";
 
 import "./Forms.css";
-
-
 
 export default function SignUpForm(props) {
   const { register, handleSubmit, errors } = useForm();
@@ -22,23 +20,19 @@ export default function SignUpForm(props) {
         localStorage.setItem("token", res.data.token);
         props.history.push("/home");
       })
-      .catch(err => 
-        alert(err.response.data.username));
-  
-
+      .catch(err => alert(err.response.data.username));
   };
 
   return (
     <div className='base-container'>
-
       {/* <img src ={loginImg} alt="construction"/> */}
-
 
       <Container>
         <Login>Sign Up</Login>
-          <Body>
-            Enter a username and password to create your account. Your privacy is important to us and will not be shared.
-          </Body>
+        <Body>
+          Enter a username and password to create your account. Your privacy is
+          important to us and will not be shared.
+        </Body>
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className='form'>
@@ -68,12 +62,8 @@ export default function SignUpForm(props) {
                 {errors.username && errors.username.type === "maxLength" && (
                   <span>Username is too long</span>
                 )}
-              
-                
               </div>
               {/* End of UserName Field */}
-
-           
 
               <label htmlFor='password'>
                 Password{" "}

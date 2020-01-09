@@ -130,8 +130,10 @@ export const StyledTruckReviewFormDiv = styled.div`
 
 export const StyledTruckReviewMap = styled.div`
   h2 {
-    align-self: flex-end;
+    color: #ffb90f;
+    align-self: center;
     margin-bottom: 0;
+    text-decoration: underline;
   }
   h3 {
     margin-bottom: 0;
@@ -140,13 +142,19 @@ export const StyledTruckReviewMap = styled.div`
     margin: 0;
   }
   p {
+    color: white;
     font-size: 0.8rem;
-    margin-left: 20%;
   }
-  display: flex;
+  margin: 4px, 4px;
+  padding: 10px;
+  background-color: #5a4e4e;
+  height: 80vh;
+  overflow-x: auto;
+  text-align: justify;
+
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
   width: 30%;
-  border-left: 1px dashed gray;
+  border-left: 1px dashed black;
 `;

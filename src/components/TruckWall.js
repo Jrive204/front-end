@@ -17,7 +17,6 @@ const TruckWall = () => {
   const [favorite, setFavorite] = useState([]);
   const [searchName, setSearchName] = useState(``);
   const [searchfilter, setSearchFilter] = useState([]);
-  let ValContext = e => (0 ? e.target.value + 1 : null);
 
   const MAX_LENGTH = 250;
 
@@ -95,16 +94,13 @@ const TruckWall = () => {
 
   useEffect(() => {
     axiosWithAuth()
-    .get('https://lambda-food-truck.herokuapp.com/api/trucks')
-    .then(resp => {
-      console.log(resp);
-    })
-    .catch(err => console.log(err));
-
-
-
-  },[]);
-
+      .get("https://lambda-food-truck.herokuapp.com/api/trucks")
+      .then(resp => {
+        console.log(resp);
+      })
+      .catch(err => console.log(err));
+  }, []);
+  
 
   return (
     <>
@@ -201,7 +197,7 @@ const TruckWall = () => {
                     <StyledFav
                       name='Favorite'
                       value={0}
-                      onChange={e => ValContext(e)}
+                      onChange={1}
                       max={1}
                       icon={<FavoriteIcon fontSize='inherit' />}
                     />

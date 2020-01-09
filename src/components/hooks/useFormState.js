@@ -9,9 +9,8 @@ export function useFormState(initial, props) {
   // console.log(props.match.params.id, `params`);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-  
-  const timer = useRef();
 
+  const timer = useRef();
 
   function handlechange(e) {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -54,7 +53,7 @@ export function useFormState(initial, props) {
         setLoading(false);
         setUser({ id: null, title: ``, stars: ``, review: `` });
         setValue(0);
-      }, 2000);
+      }, 1000);
     }
   };
 
