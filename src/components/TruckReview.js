@@ -58,13 +58,16 @@ const TruckReview = props => {
     4: "Good",
     5: "Excellent"
   };
+  const truck = props.location.state.value;
+  const name = props.location.state.truckname;
+  console.log(props.location.state, `truck`);
 
   console.log(value, hover);
 
   return (
     <StyledTruckReviewDiv>
       <StyledTruckReviewFormDiv>
-        <h1>&nbsp; Map Truck Title </h1>
+        <h1>&nbsp; {name.name} Map Truck Title </h1>
         <form id='ReviewForm' onSubmit={handleButtonClick}>
           <fieldset style={{ border: `0` }} className='formfield'>
             <label className='forms'>
@@ -137,11 +140,12 @@ const TruckReview = props => {
                   {/* Will Pushing Back to Truck Wall */}
                   {success
                     ? setTimeout(
-                        (push({
-                          pathname: `/trucks/${props.match.params.id}`,
-                          state: { value: props.location.state.value }
-                        }),
-                        1000)
+                        () =>
+                          push({
+                            pathname: `/trucks/${props.match.params.id}`,
+                            state: { value: props.location.state.value }
+                          }),
+                        1200
                       )
                     : null}
                 </StyledFab>
@@ -155,19 +159,27 @@ const TruckReview = props => {
         {console.log(user, `user`)}
       </StyledTruckReviewFormDiv>
       <StyledTruckReviewMap>
-        <h2>Map other Reviews here</h2>
-        <h3>Reviewer's name</h3>
-        <h4>Review Title</h4>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent in
-          sodales nibh. Duis sodales mattis malesuada. Morbi lorem urna,
-          hendrerit fringilla urna quis, ornare fermentum eros. Nam feugiat dui
-          orci, non fringilla odio consequat quis. Morbi tempor consequat arcu,
-          nec commodo est luctus vel. Suspendisse potenti. Proin tincidunt ac
-          mauris id placerat. Nulla egestas tempor nunc in tristique. Donec ut
-          viverra mi, sit amet aliquam dolor. Aliquam eget leo auctor, laoreet
-          sem vel, eleifend justo. In vehicula leo diam, ut vestibulum est.
-        </p>
+        <h2>Reviews</h2>
+        {truck.splice(0, 10).map(t => (
+          <>
+            <h3>{t.username}</h3>
+            <h4> {t.title}</h4>
+            <Rating
+              name='half-rating'
+              value={t.rating}
+              precision={0.5}
+              readOnly></Rating>
+            <p>
+              {t.review}Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+          </>
+        ))}
       </StyledTruckReviewMap>
     </StyledTruckReviewDiv>
   );

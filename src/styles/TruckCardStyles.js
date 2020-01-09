@@ -37,6 +37,12 @@ export const StyledTruckCardTitleDiv = styled.div`
 `;
 
 export const StyledTruckCardReviewdiv = styled.div`
+  h4 {
+    margin-top: 1%;
+  }
+  h3 {
+    margin-bottom: 0.5%;
+  }
   p {
     font-size: 1.1rem;
   }

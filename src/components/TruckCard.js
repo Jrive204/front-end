@@ -19,6 +19,10 @@ const TruckCard = props => {
   const { url } = useRouteMatch();
   const classes = useStyles();
   const [reviews, setReviews] = useState([]);
+  const [truckData, settruckData] = useState([]);
+
+  const [currentpage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(5);
 
   console.log(props, `props!!`);
   console.log(data, "data");
@@ -31,47 +35,58 @@ const TruckCard = props => {
         `https://lambda-food-truck.herokuapp.com/api${props.location.pathname}`
       )
       .then(response => {
-        console.log(response);
+        console.log(response.data, `response`);
+        settruckData(response.data);
         setReviews(response.data.reviews);
       });
-  }, []);
+  }, [props.location.pathname]);
 
   console.log(reviews, "thereviews");
 
-  const truck = props.location.state.value;
+  //Pagination
+  const indexofLastPost = currentpage * postsPerPage;
+  const indexOfFirstPost = indexofLastPost - postsPerPage;
+  const currentPosts = reviews.slice(indexOfFirstPost, indexofLastPost);
 
-  // const { id } = useParams();
+  const paginate = pageNumber => setCurrentPage(pageNumber);
+
+  const pageNumbers = [];
+
+  for (let i = 1; i <= Math.ceil(reviews.length / postsPerPage); i++) {
+    pageNumbers.push(i);
+  }
+
+  const truck = props.location.state.value;
+  console.log(truckData.reviews, "yes");
 
   return (
     <StyledTruckCardDiv>
       <StyledTruckCardimgdiv style={{ width: `100%` }}>
         <StyledTruckCardimg
-          src='https://cdn.shopify.com/s/files/1/1682/8513/files/PFF-Food-Trucks-Opening-byAllisonMichelle_69of303_2048x.JPG?v=1546732129'
+          src={truckData.imageUrl}
           // {truck.imageUrl}
           alt='truck'
         />
       </StyledTruckCardimgdiv>
       <StyledTruckCardTitleDiv>
-        <h1>{truck.name} Truck Title</h1>
+        <h1>{truckData.name} Truck Title</h1>
         <div style={{ display: "flex", width: "100%", marginBottom: ".5%" }}>
           <Rating
             name='half-rating'
             // trucks.length will = reviews.length
-            value={truck.avgRating}
+            value={truckData.avgRating}
             precision={0.5}
-            readOnly>
-            {console.log(truck, "truck")}
-          </Rating>
-          <span style={{ marginLeft: "2%" }}>{truck.length} reviews</span>
+            readOnly></Rating>
+          <span style={{ marginLeft: "2%" }}>{reviews.length} reviews</span>
         </div>
-        Cuisine: {truck.cuisine}
+        Cuisine: {truckData.cuisine}
       </StyledTruckCardTitleDiv>
       <div style={{ borderBottom: ".5px dashed gray", marginBottom: "3%" }}>
         <Link
           style={{ textDecoration: "none" }}
           to={{
             pathname: `${url}/review`,
-            state: { value: props.location.state.value }
+            state: { value: reviews, truckname: truck }
           }}>
           <Button
             variant='contained'
@@ -101,19 +116,33 @@ const TruckCard = props => {
       </div>
       <div>
         <h2>Reviews</h2>
-        {reviews.map(review => (
+        {currentPosts.map(review => (
           <StyledTruckCardReviewdiv key={review.id}>
+            <h3>{review.title}</h3>
             <Rating
               name='half-rating'
-              // trucks.length will = reviews.length
               value={review.rating}
               precision={0.5}
               readOnly></Rating>
-            <h3>{review.title}</h3>
             <h4>{review.username}</h4>
             <p>{review.review}</p>
           </StyledTruckCardReviewdiv>
         ))}
+        <nav>
+          <ul
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+              padding: "0"
+            }}
+            className='pagination'>
+            {pageNumbers.map(number => (
+              <li style={{ display: "flex" }} key={number}>
+                <button onClick={() => paginate(number)}>{number}</button>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
     </StyledTruckCardDiv>
   );
