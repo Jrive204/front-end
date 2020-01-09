@@ -46,7 +46,7 @@ const OperatorHome = (props) => {
             <Operator>
                 
                
-                <HelloOperator>Hello {props.users.username}</HelloOperator>
+               <HelloOperator>Hello {props.users.username}</HelloOperator>
                 
                 <Link to={'/addtruck'}>Create New Truck</Link>
                 <div>
