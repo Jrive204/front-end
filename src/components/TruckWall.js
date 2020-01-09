@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { useStyles, StyledFav, StyledRatings } from "../styles/TruckWallStyles";
 import Rating from "@material-ui/lab/Rating";
 import { axiosWithAuth } from "../util/axiosWithAuth";
+import TruckCard from "./TruckCard";
 
 import SearchBar from "./SearchBar";
 
@@ -17,6 +18,8 @@ const TruckWall = () => {
   const [favorite, setFavorite] = useState([]);
   const [searchName, setSearchName] = useState(``);
   const [searchfilter, setSearchFilter] = useState([]);
+
+  const context = useContext(TruckCard);
 
   const MAX_LENGTH = 250;
 
@@ -100,7 +103,6 @@ const TruckWall = () => {
       })
       .catch(err => console.log(err));
   }, []);
-  
 
   return (
     <>
@@ -151,19 +153,16 @@ const TruckWall = () => {
                         align='left'
                         gutterBottom
                         variant='h5'>
-                        {truck.name}Title
+                        {truck.name}
                       </Typography>
                     </Link>
                     <StyledRatings>
                       <Rating
                         className={classes.stars}
                         name='half-rating'
-                        // trucks.length will = reviews.length
                         value={truck.avgRating}
                         precision={0.5}
-                        readOnly>
-                        {console.log(trucklist.length, "reviews")}
-                      </Rating>
+                        readOnly></Rating>
                       <span style={{ marginLeft: "2%" }}>
                         {trucklist.length} reviews
                       </span>
@@ -189,7 +188,7 @@ const TruckWall = () => {
                           </Link>
                         </p>
                       ) : (
-                        <>{truck.description} description</>
+                        <p>{truck.description} </p>
                       )}
                     </Typography>
                   </Grid>
@@ -197,7 +196,6 @@ const TruckWall = () => {
                     <StyledFav
                       name='Favorite'
                       value={0}
-                      onChange={1}
                       max={1}
                       icon={<FavoriteIcon fontSize='inherit' />}
                     />
