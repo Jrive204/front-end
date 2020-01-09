@@ -40,7 +40,7 @@ const userReducer = (state = initialState, action) => {
                         return{...item,
                             
                             name: action.payload.data.name,
-                            imageUrl: action.payload.data.imageUrL,
+                            imageUrl: action.payload.data.imageUrl,
                             cuisine: action.payload.data.cuisine,
                             description: action.payload.data.description,
                             menu: action.payload.data.menu

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useFormState } from "./hooks/useFormState";
+import {connect} from 'react-redux';
+import {getTrucks} from '../actions';
 import {
   Inputtextarea,
   StyledButton,
@@ -185,4 +187,15 @@ const TruckReview = props => {
   );
 };
 
-export default TruckReview;
+
+const mapStateToProps = state => {
+  return{
+    users: state.users,
+    trucks: state.trucks
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  {getTrucks}
+  )(TruckReview);

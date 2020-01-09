@@ -108,7 +108,7 @@ float: left;
 
 `
 
-export const LiA= styled.a `
+export const LiA= styled.div `
 display: block;
   color: white;
   text-align: center;
