@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import { Link, useRouteMatch } from "react-router-dom";
 import {
   StyledTruckCardDiv,
@@ -22,7 +22,7 @@ const TruckCard = props => {
   const [truckData, settruckData] = useState([]);
 
   const [currentpage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(5);
+  const [postsPerPage] = useState(5);
 
   console.log(props, `props!!`);
   console.log(data, "data");
@@ -69,7 +69,7 @@ const TruckCard = props => {
         />
       </StyledTruckCardimgdiv>
       <StyledTruckCardTitleDiv>
-        <h1>{truckData.name} Truck Title</h1>
+        <h1>{truckData.name} </h1>
         <div style={{ display: "flex", width: "100%", marginBottom: ".5%" }}>
           <Rating
             name='half-rating'

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom'
 
 export const Login = styled.div `
 font-family: Roboto;
@@ -47,6 +48,23 @@ mix-blend-mode: normal;
   &:focus {
     outline: none;
   `
+  export const Otherbutton = styled(Link) `
+  font-size: 9px;
+  text-decoration: none;
+  padding: 5px 20px;
+  border: 0;
+  background-color: #DADADA;
+  color: black;
+  border-radius: 3px;
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
+  &:hover {
+    background-color: #FFB90F;
+  }
+  &:focus {
+    outline: none;
+  `
+
   export const Body = styled.p `
   
 width: 30%;
@@ -75,3 +93,40 @@ width: 30%;
 box-sizing: border-box;
   
   `
+ // turn into styled components and delete any duplicates
+
+  export const Formgroup= styled.div `
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: fit-content;
+  `
+
+  export const Styledform = styled.div`
+    display: flex;
+    flex-direction: column;
+  `
+
+  export const Labels = styled.label `
+  
+  text-align: left;
+  display: flex;
+  flex-direction: column;`
+
+ export const Inputs = styled.input `
+ margin-top: 1px;
+ min-width: 18em;
+ height: 37px;
+ padding: 0px 10px;
+ font-size: 15px;
+ font-family: "Open Sans", sans-serif;
+ background-color: #f3f3f3;
+ border: 0;
+ border-radius: 4px;
+ margin-bottom: 31px;
+ transition: all 250ms ease-in-out;
+ `
+ 
+  
+  
+

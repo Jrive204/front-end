@@ -1,14 +1,11 @@
 import styled from "styled-components";
 import {
-
-  Switch,
-  Route,
   Link } from "react-router-dom";
 
 export const HeaderStylesDiv = styled.div`
   text-align: center;
   width: 100%;
-  height: 50px;
+  height: 6.5vh;
   left: 0px;
   top: 10px;
   padding: 15px 0;
@@ -100,10 +97,12 @@ list-style-type: none;
   margin: 0;
   padding: 50;
   overflow: hidden;
-  background-color: #5A4E4E;
+  background-color: white;
+  margin-left: 20rem;
 `
 
 export const Li = styled.li `
+
 float: left;
 
 `
@@ -118,8 +117,13 @@ display: block;
 
 export const StyledLink = styled(Link)`
 display: block;
-color: color: #E9BB41;
+color: black;
 text-align: center;
 padding: 14px 16px;
 text-decoration: none;
 `;
+
+export const Stack= styled(Link)`
+color: #E9BB41;
+display: block;
+`

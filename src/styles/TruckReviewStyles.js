@@ -116,7 +116,7 @@ export const StyledReviewDiv = styled.div`
 
 export const StyledTruckReviewDiv = styled.div`
   display: flex;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   max-width: 960px;
   padding: 15px;
 `;
