@@ -33,9 +33,9 @@ function App(props) {
       <Switch>
         {/* Will use /:id instead of 'card' */}
         <PrivateRoute path='/home/trucks/:id' component={EditTruck} />
-        <PrivateRoute path='/trucks/card/review' component={TruckReview} />
+        <PrivateRoute path='/trucks/:id/review' component={TruckReview} />
         <PrivateRoute path='/addtruck' component={AddTruck}/>
-        <PrivateRoute path='/trucks/card' component={TruckCard} />
+        <PrivateRoute path='/trucks/:id' component={TruckCard} />
         <PrivateRoute path='/trucks' component={TruckWall} />
         <PrivateRoute path='/home' component={OperatorHome} />
         <Route exact path="/" component={LoginForm}/>

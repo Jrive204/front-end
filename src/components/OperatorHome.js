@@ -54,7 +54,9 @@ const OperatorHome = (props) => {
                     {props.users.trucks.map(truck =>
                         <div key={truck.id}>
                         <h3>{truck.name}</h3>
+                        <img src={truck.imageUrl} alt='truck' style={{maxWidth: '150px'}}/>
                         <Cuisine>Cuisine: {truck.cuisine}</Cuisine>
+                        <p>{truck.description}</p>
                         <br />
                         <button onClick={(e) => deleteTruck(e, truck.id)}>delete</button>
                         <Link to={{pathname:`/home/trucks/${truck.id}`, state: { truck: truck}}}>Edit Truck</Link>
@@ -72,6 +74,7 @@ const OperatorHome = (props) => {
                 {props.users.trucks.map(truck =>
                         <div key={truck.id}>
                         <h3>{truck.name}</h3>
+                        <img src={truck.imageUrl} alt='truck'/>
                         <Cuisine>Cuisine: {truck.cuisine}</Cuisine>
                         <br />
                         <Button onClick={(e) => deleteTruck(e, truck.id)}>delete</Button>

@@ -13,13 +13,13 @@ export const getTrucks = (load) => dispatch => {
 };
 
 export const editTrucks = (update, id) => dispatch => {
-    console.log(update);
+    // console.log(update);
     
     axiosWithAuth()
     .put(`https://lambda-food-truck.herokuapp.com/api/trucks/${id}`,update)
     .then(resp => {
-        console.log(resp);
-        // dispatch({type: EDIT_TRUCK, payload: { data:update, id: id } })
+        console.log('resp',resp);
+        dispatch({type: EDIT_TRUCK, payload: { data:update, key:id } })
     })
     .catch(err => console.log(err));
 
