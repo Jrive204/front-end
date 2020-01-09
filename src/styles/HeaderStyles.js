@@ -48,30 +48,6 @@ font-weight: normal;
 font-size: 48px;
 line-height: 0px;
 
-
-
-/* identical to box height */
-
-// display: flex;
-// align-items: center;
-// text-align: center;
-
-  // position: absolute;
-  // width: 39px;
-  // height: 15px;
-  // left: 13px;
-  // top: 26px;
-  // font-family: Risque;
-  // font-style: normal;
-  // font-weight: 500;
-  // font-size: 1.45rem;
-  // line-height: 21px;
-  // display: flex;
-  // align-items: center;
-  // color: #000000;
-
-
-
 `;
 
 export const StyledpTruck = styled(StyledpFood)`
@@ -88,42 +64,60 @@ export const StyledImgLogo = styled.img`
   width: 45px;
   top: 37px;
   left: 78px;
-
+ 
 `;
 
 export const Ul = styled.ul `
+
 width: 100%;
 list-style-type: none;
   margin: 0;
   padding: 50;
   overflow: hidden;
   background-color: white;
-  margin-left: 20rem;
+
 `
 
 export const Li = styled.li `
+
 
 float: left;
 
 `
 
 export const LiA= styled.a `
-display: block;
+  display: block;
   color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  
 `
 
 export const StyledLink = styled(Link)`
+
 display: block;
 color: black;
 text-align: center;
 padding: 14px 16px;
 text-decoration: none;
+
 `;
 
 export const Stack= styled(Link)`
 color: #E9BB41;
 display: block;
+
+`
+
+export const Leftlinks = styled.div`
+
+
+`
+
+
+export const Otherlinks = styled.div`
+  
+display: flex;
+justify-content: center;
 `
