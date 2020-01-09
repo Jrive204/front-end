@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useFormState } from "./hooks/useFormState";
-import {connect} from 'react-redux';
-import {getTrucks} from '../actions';
+import { connect } from "react-redux";
+import { getTrucks } from "../actions";
 import {
   Inputtextarea,
   StyledButton,
@@ -62,14 +62,14 @@ const TruckReview = props => {
   };
   const truck = props.location.state.value;
   const name = props.location.state.truckname;
-  console.log(props.location.state, `truck`);
+  console.log(props, `truck`);
 
   console.log(value, hover);
 
   return (
     <StyledTruckReviewDiv>
       <StyledTruckReviewFormDiv>
-        <h1>&nbsp; {name.name} Map Truck Title </h1>
+        <h1>&nbsp; {name.name} </h1>
         <form id='ReviewForm' onSubmit={handleButtonClick}>
           <fieldset style={{ border: `0` }} className='formfield'>
             <label className='forms'>
@@ -187,15 +187,11 @@ const TruckReview = props => {
   );
 };
 
-
 const mapStateToProps = state => {
-  return{
+  return {
     users: state.users,
     trucks: state.trucks
-  }
-}
+  };
+};
 
-export default connect(
-  mapStateToProps,
-  {getTrucks}
-  )(TruckReview);
+export default connect(mapStateToProps, { getTrucks })(TruckReview);
