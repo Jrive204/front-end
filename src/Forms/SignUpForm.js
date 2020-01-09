@@ -1,16 +1,20 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import { useForm } from "react-hook-form";
 import { axiosWithAuth } from "../util/axiosWithAuth";
 
-import { Link } from "react-router-dom";
+import { Login, 
+  Container, 
+  Button, 
+  Body, 
+  Otherbutton, 
+  Formgroup, 
+  Styledform, 
+  Labels, 
+  Inputs } from "../styles/LoginRegisterStyles";
 
-
-import { Login, Container, Button, Body } from "../styles/LoginRegisterStyles";
-
-
-
-import "./Forms.css";
-
+  
 export default function SignUpForm(props) {
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = data => {
@@ -39,13 +43,13 @@ export default function SignUpForm(props) {
         </Body>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className='form'>
-            <div className='form-group'>
+          <Styledform>
+            <Formgroup>
               {/* Start of UserName field */}
               <div className='rectangle'>
-                <label htmlFor='username'>
+                <Labels htmlFor='username'>
                   User Name
-                  <input
+                  <Inputs
                     type='text'
                     placeholder='username'
                     name='username'
@@ -55,7 +59,7 @@ export default function SignUpForm(props) {
                       maxLength: 15
                     })}
                   />
-                </label>
+                </Labels>
 
                 {errors.username && errors.username.type === "required" && (
                   <span>Please enter a username</span>
@@ -69,16 +73,17 @@ export default function SignUpForm(props) {
               </div>
               {/* End of UserName Field */}
 
-              <label htmlFor='password'>
-                Password{" "}
-                <span>
+              <Labels htmlFor='password'>
+              <span>
                   Already a user?
-                  <Link tag={Link} to='/'>
+                  <Otherbutton tag={Link} to='/'>
                     Sign In
-                  </Link>
+                  </Otherbutton>
                 </span>
-              </label>
-              <input
+                Password{" "}
+               
+              </Labels>
+              <Inputs
                 type='password'
                 placeholder='Password'
                 name='password'
@@ -92,7 +97,7 @@ export default function SignUpForm(props) {
                 <span>Password is too short - 5 characters</span>
               )}
 
-              <label htmlFor='role'>
+              <Labels htmlFor='role'>
                 Select your role
                 <select
                   name='role'
@@ -104,13 +109,13 @@ export default function SignUpForm(props) {
                   <option value='2'>Diner</option>
                   <option value='1'>Operator</option>
                 </select>
-              </label>
-            </div>
+              </Labels>
+            </Formgroup>
 
             <div className='footer'>
               <Button>Submit</Button>
             </div>
-          </div>
+          </Styledform>
         </form>
       </Container>
     </div>

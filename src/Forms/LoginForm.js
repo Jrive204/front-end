@@ -1,9 +1,17 @@
 import React from "react";
-import { useForm} from "react-hook-form";
-import "./Forms.css";
-import {axiosWithAuth}  from "../util/axiosWithAuth"
-import { Link } from 'react-router-dom'
-import { Login, Container, Button, Body} from "../styles/LoginRegisterStyles"
+import {  useForm} from "react-hook-form";
+import {  axiosWithAuth}  from "../util/axiosWithAuth"
+import {  Link } from 'react-router-dom'
+import {  Login, 
+          Container, 
+          Button, 
+          Otherbutton, 
+          Body, 
+          Formgroup, 
+          Styledform, 
+          Labels, 
+          Inputs  
+} from "../styles/LoginRegisterStyles"
 
 
 export default function LoginForm(props) {
@@ -11,12 +19,13 @@ export default function LoginForm(props) {
 
 
   const onSubmit = data => {
-    console.log(data);
+   
+
     axiosWithAuth()
       .post("https://lambda-food-truck.herokuapp.com/api/auth/login", data)
 
       .then(res => {
-        console.log("success", res);
+        
         localStorage.setItem("token", res.data.token);
         props.history.push("/home");
       })
@@ -35,18 +44,19 @@ return (
       not be shared.
     </Body>
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className='form'>
-        <div className='form-group'>
+      <Styledform>
+        <Formgroup>
+
           {/* Start of UserName field */}
-          <label htmlFor='username'>
+          <Labels htmlFor='username'>
             User Name
-            <input
+            <Inputs
               type='text'
               name='username'
               placeholder='username'
               ref={register({ required: true, minLength: 6, maxLength: 15 })}
             />
-          </label>
+          </Labels>
           {errors.username && errors.username.type === "required" && (
             <span>Please enter a username</span>
           )}
@@ -60,17 +70,17 @@ return (
           {/* End of UserName Field */}
 
           {/* Start of Password Field */}
-          <label htmlFor='password'>
+          <Labels htmlFor='password'>
             <span>
               {" "}
               No Account?
-              <Link tag={Link} to='/signup'>
+              <Otherbutton tag={Link} to='/signup'>
                 Sign Up
-              </Link>
+              </Otherbutton>
             </span>
             Password
-          </label>
-          <input
+          </Labels>
+          <Inputs
             type='password'
             placeholder='Password'
             name='password'
@@ -84,14 +94,15 @@ return (
             <span>Password is too short - 5 characters</span>
           )}
           {/* End of password field  */}
-        </div>
+        </Formgroup>
 
         <div className='footer'>
           <Button>Submit</Button>
         </div>
-      </div>
+
+      </Styledform>
     </form>
   </Container>
 );
-          }
+}
 
