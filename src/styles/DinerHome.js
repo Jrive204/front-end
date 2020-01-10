@@ -2,11 +2,8 @@ import styled from "styled-components";
 
 export const Hellodiner = styled.p `
 
-
 `
-
 export const HelloOperator = styled.p `
-
 
 `
 
