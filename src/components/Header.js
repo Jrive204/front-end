@@ -13,8 +13,7 @@ const Header = () => {
       <Link to='/home'>
         <StyledpTrackR>Food Truck TrackR</StyledpTrackR>
       </Link>
-
-     
+    
     </HeaderStylesDiv>
   );
 };

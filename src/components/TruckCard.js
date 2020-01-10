@@ -15,6 +15,9 @@ import data from "../data.test";
 import { Button, GridList, GridListTile } from "@material-ui/core";
 import { axiosWithAuth } from "../util/axiosWithAuth";
 
+import { connect } from "react-redux";
+import { getTrucks } from "../actions";
+
 const TruckCard = props => {
   const { url } = useRouteMatch();
   const classes = useStyles();
@@ -147,5 +150,10 @@ const TruckCard = props => {
     </StyledTruckCardDiv>
   );
 };
-
-export default TruckCard;
+const mapStateToProps = state => {
+  return {
+    users: state.users,
+    trucks: state.trucks
+  };
+};
+export default connect(mapStateToProps, { getTrucks })(TruckCard);

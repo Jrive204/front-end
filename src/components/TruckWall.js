@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
@@ -9,19 +9,17 @@ import { useStyles, StyledFav, StyledRatings } from "../styles/TruckWallStyles";
 import Rating from "@material-ui/lab/Rating";
 import { axiosWithAuth } from "../util/axiosWithAuth";
 
-import {connect} from 'react-redux';
-import {getTrucks} from '../actions';
+import { connect } from "react-redux";
+import { getTrucks } from "../actions";
 
 import SearchBar from "./SearchBar";
 
-const TruckWall = (props) => {
+const TruckWall = props => {
   const classes = useStyles();
   const [trucklist, setTruckList] = useState([]);
   // const [favorite, setFavorite] = useState();
   const [searchName, setSearchName] = useState(``);
   const [searchfilter, setSearchFilter] = useState([]);
-
-  const context = useContext(TruckCard);
 
   const MAX_LENGTH = 250;
 
@@ -102,11 +100,12 @@ const TruckWall = (props) => {
     axiosWithAuth()
       .get("https://lambda-food-truck.herokuapp.com/api/trucks")
       .then(resp => {
-        console.log('data',resp);
-        
+        console.log("data", resp);
       })
       .catch(err => console.log(err));
   }, []);
+
+  console.log(props, "props");
 
   return (
     <>
@@ -238,9 +237,4 @@ const mapStateToProps = state => {
     trucks: state.trucks
   };
 };
-export default connect(
-  mapStateToProps,
-  {getTrucks}
-  )(TruckWall);
-
-
+export default connect(mapStateToProps, { getTrucks })(TruckWall);
