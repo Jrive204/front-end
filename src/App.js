@@ -5,6 +5,7 @@ import SignUpForm from "./Forms/SignUpForm";
 import TruckReview from "./components/TruckReview";
 import Header from "./components/Header";
 import Navigation from "./components/Navigation"
+
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import TruckWall from "./components/TruckWall";
@@ -14,6 +15,7 @@ import PrivateRoute from "./util/PrivateRoute";
 import OperatorHome from "./components/OperatorHome";
 import AddTruck from "./Forms/AddTruck";
 import EditTruck from "./Forms/EditTruck";
+import Footer from "./components/Footer"
 
 
 
@@ -25,6 +27,8 @@ function App(props) {
         <GlobalStyle />
         <Header />
         <Navigation />
+       
+       
         <Switch>
           {/* Will use /:id instead of 'card' */}
           <PrivateRoute path='/home/trucks/:id' component={EditTruck} />
@@ -36,7 +40,7 @@ function App(props) {
           <Route exact path='/' component={LoginForm} />
           <Route exact path='/signup' component={SignUpForm} />
         </Switch>
-
+        <Footer />
       </Router>
     </div>
   );

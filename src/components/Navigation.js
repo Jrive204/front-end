@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-import { Ul , Li, LiA, StyledLink} from "../styles/HeaderStyles"
+import { Ul , Li, LiA, StyledLink, Leftlinks, Otherlinks} from "../styles/HeaderStyles"
 
   const Navigation= (props) => {
     
@@ -9,32 +9,29 @@ import { Ul , Li, LiA, StyledLink} from "../styles/HeaderStyles"
     return (
      
              <>
+           
            <Ul>
-
+           <Leftlinks>
             <Li>
                 <LiA>
                 <StyledLink as="a" href="https://bwfoodtrucktracker.github.io/marketing-ui/">Marketing Page</StyledLink>
                 </LiA>
             </Li>
-
-
            <Li>
                 <LiA>
-                <StyledLink to="/home">Home</StyledLink>
+                <StyledLink to="/">Login</StyledLink>
                 </LiA>
             </Li>
+            </Leftlinks> 
 
+            <Otherlinks>
             <Li>
                 <LiA>
                 <StyledLink to="/trucks">Truck Wall</StyledLink>
                 </LiA>
             </Li>
-            
-            <Li>
-                <LiA>
-                <StyledLink to="/addtruck">Add Truck</StyledLink>
-                </LiA>
-            </Li>
+            </Otherlinks>
+           
  
 
         </Ul>

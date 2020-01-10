@@ -4,6 +4,8 @@ import {axiosWithAuth} from '../util/axiosWithAuth';
 import {getUsers,deleteTrucks} from '../actions';
 import {Link} from 'react-router-dom';
 
+
+
 import {Hellodiner, 
         Diner, 
         Favtrucks, 
@@ -42,10 +44,10 @@ const OperatorHome = (props) => {
         .catch(err => console.log(err));
     };
     return(<>
+  
         {props.users.role === 1 &&
             <Operator>
                 
-               
                <HelloOperator>Hello {props.users.username}</HelloOperator>
                 
                 <Link to={'/addtruck'}>Create New Truck</Link>
@@ -68,6 +70,7 @@ const OperatorHome = (props) => {
         }
         {props.users.role === 2 && 
             <Diner>
+           
                  
                 <Hellodiner>Hello {props.users.username}</Hellodiner>
                 <Favtrucks> Favorite Trucks</Favtrucks>
