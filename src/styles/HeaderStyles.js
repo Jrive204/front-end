@@ -85,8 +85,10 @@ float: left;
 
 `
 
+
 export const LiA= styled.a `
   display: block;
+
   color: white;
   text-align: center;
   padding: 14px 16px;

@@ -8,14 +8,16 @@ import { Link } from "react-router-dom";
 import { useStyles, StyledFav, StyledRatings } from "../styles/TruckWallStyles";
 import Rating from "@material-ui/lab/Rating";
 import { axiosWithAuth } from "../util/axiosWithAuth";
-import TruckCard from "./TruckCard";
+
+import {connect} from 'react-redux';
+import {getTrucks} from '../actions';
 
 import SearchBar from "./SearchBar";
 
-const TruckWall = () => {
+const TruckWall = (props) => {
   const classes = useStyles();
   const [trucklist, setTruckList] = useState([]);
-  const [favorite, setFavorite] = useState([]);
+  // const [favorite, setFavorite] = useState();
   const [searchName, setSearchName] = useState(``);
   const [searchfilter, setSearchFilter] = useState([]);
 
@@ -81,6 +83,7 @@ const TruckWall = () => {
     axiosWithAuth()
       .get(`https://lambda-food-truck.herokuapp.com/api/trucks `)
       .then(response => {
+        props.getTrucks(response.data);
         let trucks = response.data.filter(truck =>
           truck.cuisine.toLowerCase().includes(searchName.toLowerCase().trim())
         );
@@ -99,7 +102,8 @@ const TruckWall = () => {
     axiosWithAuth()
       .get("https://lambda-food-truck.herokuapp.com/api/trucks")
       .then(resp => {
-        console.log(resp);
+        console.log('data',resp);
+        
       })
       .catch(err => console.log(err));
   }, []);
@@ -228,4 +232,15 @@ const TruckWall = () => {
   );
 };
 
-export default TruckWall;
+const mapStateToProps = state => {
+  return {
+    users: state.users,
+    trucks: state.trucks
+  };
+};
+export default connect(
+  mapStateToProps,
+  {getTrucks}
+  )(TruckWall);
+
+
