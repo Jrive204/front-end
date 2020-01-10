@@ -162,7 +162,7 @@ const TruckReview = props => {
       </StyledTruckReviewFormDiv>
       <StyledTruckReviewMap>
         <h2>Reviews</h2>
-        {truck.map(t => (
+        {truck.slice(0, 8).map(t => (
           <>
             <h3>{t.username}</h3>
             <h4> {t.title}</h4>
