@@ -1,8 +1,7 @@
 import styled from "styled-components";
-
-import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import { green } from "@material-ui/core/colors";
+import Button from "@material-ui/core/Button";
 import Fab from "@material-ui/core/Fab";
 
 // Inline styles in FieldSet, P tag ,h1 (spacing)
@@ -79,24 +78,29 @@ export const StyledTitleInput = styled.input`
 `;
 
 export const StyledButton = styled(Button)`
-  color: white;
+  &&& {
+    color: white;
 
-  &:hover {
-    background-color: rgb(24, 24, 24);
+    &:hover {
+      background-color: rgb(24, 24, 24);
+    }
+
+    font-weight: bold;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    background: black;
+    width: 50%;
   }
-  font-weight: bold;
-  margin-top: 2%;
-  margin-bottom: 1%;
-  background: black;
-  width: 50%;
 `;
 export const StyledFab = styled(Fab)`
-  background-color: black;
-  &:hover {
-    background-color: rgb(24, 24, 24);
-  }
+  &&& {
+    background-color: black;
+    &:hover {
+      background-color: rgb(24, 24, 24);
+    }
 
-  font-size: 0;
+    font-size: 0;
+  }
 `;
 
 export const StyledRating = styled.div`

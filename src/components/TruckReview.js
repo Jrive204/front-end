@@ -3,8 +3,8 @@ import { useFormState } from "./hooks/useFormState";
 import { connect } from "react-redux";
 import { getTrucks } from "../actions";
 import {
-  Inputtextarea,
   StyledButton,
+  Inputtextarea,
   StyledRating,
   StyledReviewDiv,
   StyledTitleInput,
@@ -16,7 +16,6 @@ import {
 } from "../styles/TruckReviewStyles";
 import Rating from "@material-ui/lab/Rating";
 import Box from "@material-ui/core/Box";
-import { StylesProvider } from "@material-ui/styles";
 import clsx from "clsx";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import CheckIcon from "@material-ui/icons/Check";
@@ -114,47 +113,43 @@ const TruckReview = props => {
                 onChange={handlechange}></Inputtextarea>
             </StyledReviewDiv>
             <div className={classes.wrapper}>
-              <StylesProvider injectFirst>
-                <StyledButton
-                  variant='contained'
-                  color='default'
-                  type='submit'
-                  size='large'
-                  className={buttonClassname}
-                  disabled={loading}>
-                  Post Review
-                  {loading && (
-                    <CircularProgress
-                      size={32}
-                      className={classes.buttonProgress}
-                    />
-                  )}
-                </StyledButton>
-              </StylesProvider>
-              &nbsp;&nbsp;
-              <StylesProvider injectFirst>
-                <StyledFab
-                  aria-label='save'
-                  type='submit'
-                  color='primary'
-                  className={buttonClassname}>
-                  {success ? <CheckIcon /> : <Publish />}
-                  {/* Will Pushing Back to Truck Wall */}
-                  {success
-                    ? setTimeout(
-                        () =>
-                          push({
-                            pathname: `/trucks/${props.match.params.id}`,
-                            state: { value: props.location.state.value }
-                          }),
-                        1200
-                      )
-                    : null}
-                </StyledFab>
+              <StyledButton
+                variant='contained'
+                color='default'
+                type='submit'
+                size='large'
+                className={buttonClassname}
+                disabled={loading}>
+                Post Review
                 {loading && (
-                  <CircularProgress size={68} className={classes.fabProgress} />
+                  <CircularProgress
+                    size={32}
+                    className={classes.buttonProgress}
+                  />
                 )}
-              </StylesProvider>
+              </StyledButton>
+              &nbsp;&nbsp;
+              <StyledFab
+                aria-label='save'
+                type='submit'
+                color='primary'
+                className={buttonClassname}>
+                {success ? <CheckIcon /> : <Publish />}
+                {/* Will Pushing Back to Truck Wall */}
+                {success
+                  ? setTimeout(
+                      () =>
+                        push({
+                          pathname: `/trucks/${props.match.params.id}`,
+                          state: { value: props.location.state.value }
+                        }),
+                      1200
+                    )
+                  : null}
+              </StyledFab>
+              {loading && (
+                <CircularProgress size={68} className={classes.fabProgress} />
+              )}
             </div>
           </fieldset>
         </form>

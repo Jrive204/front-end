@@ -4,17 +4,18 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { axiosWithAuth } from "../util/axiosWithAuth";
 
-import { Login, 
-  Container, 
-  Button, 
-  Body, 
-  Otherbutton, 
-  Formgroup, 
-  Styledform, 
-  Labels, 
-  Inputs } from "../styles/LoginRegisterStyles";
+import {
+  Login,
+  Container,
+  Button,
+  Body,
+  Otherbutton,
+  Formgroup,
+  Styledform,
+  Labels,
+  Inputs
+} from "../styles/LoginRegisterStyles";
 
-  
 export default function SignUpForm(props) {
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = data => {
@@ -74,14 +75,13 @@ export default function SignUpForm(props) {
               {/* End of UserName Field */}
 
               <Labels htmlFor='password'>
-              <span>
+                <span>
                   Already a user?
                   <Otherbutton tag={Link} to='/'>
                     Sign In
                   </Otherbutton>
                 </span>
                 Password{" "}
-               
               </Labels>
               <Inputs
                 type='password'
